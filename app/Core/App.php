@@ -4,21 +4,12 @@ namespace Core;
 
 class App
 {
-    protected $container;
+   public $router;
+   public function __construct() {
+       $this->router = new Router;
+   }
 
-    public function __construct() {
-        $this->container = new Container(
-            ['router' => function () {
-                return new Router();
-            }]
-        );
-    }
-
-    public function getContainer() {
-        return $this->container;
-    }
-
-    public function run() {
-        return $this->container->router->route();
-    }
+   public function run() {
+       $this->router->route();
+   }
 }
