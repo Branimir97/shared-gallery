@@ -1,14 +1,12 @@
 <?php
 
 require('autoloader.php');
-
 use Core\App;
 
 $app = new App;
-
 $container = $app->getContainer();
 
-$container['env'] = function () {
+$container['db_conf'] = function () {
     return [
         'db_driver' => 'mysql',
         'db_host' => 'localhost',
@@ -18,16 +16,16 @@ $container['env'] = function () {
     ];
 };
 
-$container['database'] = function ($c) {
-    $env = $c->env;
+$container['db_conn'] = function ($c) {
+    $db_conf = $c->db_conf;
     return new PDO(
-        $c->env['db_driver'].":host=".$c->env['db_host'].";dbname=".$c->env['db_name'],
-        $c->env['db_user'],
-        $c->env['db_password']
+        $db_conf['db_driver'].":host=".$db_conf['db_host'].";dbname=".$db_conf['db_name'],
+        $db_conf['db_user'],
+        $db_conf['db_password']
     );
 };
 
-var_dump($container->database);
+$app->run();
 
 
 

@@ -7,6 +7,12 @@ class Container implements \ArrayAccess
     public $items = [];
     public $cacheItems = [];
 
+    public function __construct(array $offsets) {
+        foreach($offsets as $key => $offset) {
+            $this->items[$key] = $offset;
+        }
+    }
+
     public function offsetExists($offset): bool
     {
         return isset($this->items[$offset]);
