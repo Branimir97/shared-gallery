@@ -4,14 +4,14 @@ namespace Controllers;
 use Models\View;
 use Exceptions\TemplateNotFoundException;
 
-class Controller404 extends View
+class HomeController extends View
 {
-    public function __construct() {
-        try {
-            echo parent::render('404');
+    public function indexAction() 
+    {
+        try{
+            echo parent::render('Home');
         } catch(TemplateNotFoundException $e) {
             echo $e->getMessage();
         }
     }
 }
-

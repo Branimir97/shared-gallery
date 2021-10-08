@@ -10,21 +10,39 @@ class Router
         $uri = $_SERVER['REQUEST_URI'];
         $uriParts = explode('/', $uri);
         
-
         if(count($uriParts) >= 4) {
             return new Controller404;
         }
 
-        if(isset($urlParts[1])) {
-            if($urlParts[1] == '') {
-                $controllerName = 'Home';
+        if(isset($uriParts[1])) {
+            if($uriParts[1] == '') {
+                $controllerName = 'home';
             } else {
-                $controllerName = $urlParts[1];
+                $controllerName = $uriParts[1];
             }
         }
 
-        if(isset($urlParts[2])) {
+        if(isset($uriParts[2])) {
+            $viewAction = $uriParts[2].'Action';
+        } else {
+            $viewAction = 'indexAction';
+        }
 
+        $controllerFile = 'Controllers/'.ucfirst($controllerName).'Controller.php';
+        
+        if(!file_exists($controllerFile)) {
+            return new Controller404;
+        } else {
+           $controllerClass = 'Controllers\\'.ucfirst($controllerName).'Controller';
+           $controllerClass = new $controllerClass();
+           if(isset($viewAction)) {
+                $controllerMethods = get_class_methods($controllerClass);
+                if(in_array($viewAction, $controllerMethods)) {
+                    $controllerClass->$viewAction();
+                } else {
+                    return new Controller404;
+                }
+           }
         }
     }
 }
