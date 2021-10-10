@@ -44,9 +44,7 @@
         </div>
     </nav>
     <div class="container text-center mt-2">
-      <button class="p-2 btn btn-outline-success">
-          Get photos number
-      </button>
+        <h2>Login</h2>
     </div>
    
     <!-- Optional JavaScript -->
