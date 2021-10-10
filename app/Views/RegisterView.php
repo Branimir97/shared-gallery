@@ -6,10 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" 
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+          crossorigin="anonymous">
 
-      <!-- FontAwesome -->
-      <script src="https://kit.fontawesome.com/6aa1bd9ffa.js" crossorigin="anonymous"></script>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/6aa1bd9ffa.js" crossorigin="anonymous"></script>
+  
+    <!-- CSS -->
+    <style>
+          <?php include "css/register.css"?>
+    </style>
     <title>
       Shared gallery
     </title>
@@ -28,29 +36,79 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="/home">
-              Home
-              <i class="fas fa-house-damage"></i>
-            </a>
-            <a class="nav-item nav-link" href="/login">
-              Login
-              <i class="fas fa-sign-in-alt"></i>
-            </a>
-            <a class="nav-item nav-link" href="/register">
-              Register
-              <i class="fas fa-user-plus"></i>
-            </a>
+              <a class="nav-item nav-link" href="/home">
+                Home
+                <i class="fas fa-house-damage"></i>
+              </a>
+              <a class="nav-item nav-link" href="/login">
+                Login
+                <i class="fas fa-sign-in-alt"></i>
+              </a>
+              <a class="nav-item nav-link" href="/register">
+                Register
+                <i class="fas fa-user-plus"></i>
+              </a>
             </div>
         </div>
     </nav>
-    <div class="container text-center mt-2">
-        <h2>Register</h2>
+    <div class="container text-center mt-2 mb-3">
+        <h2 class="p-3">
+          Register form
+        </h2>
+        <i class="fas fa-user-plus"></i>
+    <form>
+      <div class="form-group">
+        <label for="username">
+          Username
+        </label>
+        <input type="text" class="form-control" id="username" placeholder="e.g. Branimir97">
+      </div>
+      <div class="form-group">
+        <label for="email">
+          Email address
+        </label>
+        <input type="email" class="form-control" id="email" placeholder="e.g. branimir@gmail.com">
+      </div>
+      <div class="form-group">
+        <label for="password">
+          Password
+        </label>
+        <input type="password" class="form-control" id="password" 
+               placeholder="e.g. 123!aA!123">
+        <small>Password must contain min 8 characters.</small>
+      </div>
+      <div class="form-group">
+        <label for="repeatPassword">
+          Repeat password
+        </label>
+        <input type="password" class="form-control" id="repeatPassword" 
+               placeholder="e.g. 123ab123">
+        <small>
+          Passwords must match.
+        </small>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">
+          Remember me
+        </label>
+      </div>
+      <button type="submit" class="btn btn-success mt-2 mb-1">
+        Register
+      </button>
+    </form>
     </div>
    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+            crossorigin="anonymous"></script>
   </body>
 </html>

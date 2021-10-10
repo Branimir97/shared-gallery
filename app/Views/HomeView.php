@@ -45,7 +45,7 @@
     </nav>
     <div class="container text-center mt-2">
       <button class="p-2 btn btn-outline-success">
-          Get photos number
+          Get total number of <strong>Shared gallery</strong> photos
       </button>
     </div>
    
