@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(isset($_SESSION['loggedIn'])){
+    header('Location: /home');
+  } 
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -37,22 +44,6 @@
             Home
             <i class="fas fa-house-damage"></i>
           </a>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Menu
-              <i class="fas fa-chevron-circle-down"></i>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">
-                Management
-                <i class="fas fa-images"></i>
-              </a>
-              <a class="dropdown-item" href="#">
-                My account
-                <i class="fas fa-user-circle"></i>
-              </a>
-            </div>
-          </li>
           <a class="nav-item nav-link" href="/login">
             Login
             <i class="fas fa-sign-in-alt"></i>
@@ -67,13 +58,13 @@
 
     <div class="container text-center pt-2 mb-3">
       <?php
-        session_start();
         if(isset($_SESSION['registered'])) {
           echo '
             <p class="bg-success text-white p-2 mb-2">
               '.$_SESSION['registered'].'
             </p>
           ';
+          session_unset($_SESSION['registered']);
         }
         if(isset($_SESSION['errors'])) {
           foreach($_SESSION['errors'] as $error) {
@@ -83,8 +74,8 @@
               </p>
             ';
           }
+          session_unset($_SESSION['errors']);
         }
-        session_destroy();
       ?>
       <h2 class="p-3">
         Login form

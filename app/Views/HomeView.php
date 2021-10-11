@@ -34,37 +34,37 @@
             <i class="fas fa-house-damage"></i>
           </a>
           <?php 
-          session_start();
-          if(isset($_SESSION['loggedIn'])): ?>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Menu
-              <i class="fas fa-chevron-circle-down"></i>
+            session_start();
+            if(isset($_SESSION['loggedIn'])): ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
+                <i class="fas fa-chevron-circle-down"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">
+                  Management
+                  <i class="fas fa-images"></i>
+                </a>
+                <a class="dropdown-item" href="#">
+                  My account
+                  <i class="fas fa-user-circle"></i>
+                </a>
+              </div>
+            </li>
+            <a class="nav-item nav-link" href="/login">
+              Logout
+              <i class="fas fa-sign-in-alt"></i>
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">
-                Management
-                <i class="fas fa-images"></i>
-              </a>
-              <a class="dropdown-item" href="#">
-                My account
-                <i class="fas fa-user-circle"></i>
-              </a>
-            </div>
-          </li>
-          <a class="nav-item nav-link" href="/login">
-            Logout
-            <i class="fas fa-sign-in-alt"></i>
-          </a>
-          <?php else: ?>
-          <a class="nav-item nav-link" href="/login">
-            Login
-            <i class="fas fa-sign-in-alt"></i>
-          </a>
-          <a class="nav-item nav-link" href="/register">
-            Register
-            <i class="fas fa-user-plus"></i>
-          </a>
+            <?php else: ?>
+            <a class="nav-item nav-link" href="/login">
+              Login
+              <i class="fas fa-sign-in-alt"></i>
+            </a>
+            <a class="nav-item nav-link" href="/register">
+              Register
+              <i class="fas fa-user-plus"></i>
+            </a>
           <?php endif; ?>
         </div>
       </div>
