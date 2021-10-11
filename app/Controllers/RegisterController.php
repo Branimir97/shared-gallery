@@ -2,6 +2,8 @@
 
 namespace Controllers;
 use Models\View;
+use Models\User;
+use Storage\MySqlDatabaseUserStorage;
 use Exceptions\TemplateNotFoundException;
 
 class RegisterController extends View
@@ -19,9 +21,12 @@ class RegisterController extends View
     {
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(isset($_POST['submit'])) {
-                $username = $_POST['username']; 
-                $email = $_POST['email'];
-                var_dump($username);
+                $user = new User();
+                $user->setUsername($_POST['username']); 
+                $user->setEmail($_POST['email']);
+                $user->setPassword($_POST['password']);
+                $storage = new MySqlDatabaseUserStorage();
+                $storage->save($user);
             }
         }
     }

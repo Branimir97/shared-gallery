@@ -8,6 +8,7 @@ class User
     private $username;
     private $email;
     private $password;
+    private $createdAt;
 
     public function getId()
     {
@@ -19,7 +20,7 @@ class User
         $this->id = $id;
     }
 
-    public function getUsername(int $id)
+    public function getUsername()
     {
         return $this->username;
     }
@@ -47,5 +48,10 @@ class User
     public function setPassword($password)
     {
         $this->password = $password;    
+    }
+
+    public function getCreatedAt() {
+        $this->createdAt = new \DateTime('now');
+        return $this->createdAt;
     }
 }
