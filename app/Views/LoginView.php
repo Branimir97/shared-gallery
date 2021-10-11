@@ -65,7 +65,18 @@
       </div>
     </nav>
 
-    <div class="container text-center mt-2 mb-3">
+    <div class="container text-center pt-2 mb-3">
+      <?php
+        session_start();
+        if(isset($_SESSION['registered'])) {
+          echo '
+            <p class="bg-success text-white p-2 mb-2">
+              '.$_SESSION['registered'].'
+            </p>
+          ';
+        }
+        session_destroy();
+      ?>
       <h2 class="p-3">
         Login form
       </h2>
@@ -95,6 +106,9 @@
           Login
         </button>
       </form>
+      <p class="mt-2">
+        No account? Register <a href="/register">here</a>.
+      </p>
     </div>
    
     <!-- Optional JavaScript -->

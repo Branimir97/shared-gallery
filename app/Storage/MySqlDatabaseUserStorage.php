@@ -31,32 +31,36 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         $statement = $this->dbConn->prepare($query);
         $statement->setFetchMode(\PDO::FETCH_OBJ);
         $statement->execute();
-
         $registeredUsers = $statement->fetchAll();
-
+        $usedEmail = $usedUsername = false;
         foreach($registeredUsers as $registeredUser) {
             if($registeredUser->email === $user->getEmail()) {
                 $errors[] = "Already used email address.";
+                $usedEmail = true;
             } 
             if($registeredUser->username === $user->getUsername()) {
                 $errors[] = "Already used username.";
+                $usedUsername = true;
             }
-            break;
+            if($usedEmail || $usedUsername) {
+                break;
+            }
         }
 
+        session_start();
         if(count($errors) === 0) {
-          $sql = 
-            "INSERT INTO user(username, email, password, created_at)
-             VALUES (:username, :email, :password, :created_at)";
+            $sql = 
+                "INSERT INTO user(username, email, password, created_at)
+                VALUES (:username, :email, :password, :created_at)";
             $statement = $this->dbConn->prepare($sql);
             $statement->bindValue(':username', $user->getUsername());
-            $statement->bindValue(':email',     $user->getEmail());
+            $statement->bindValue(':email', $user->getEmail());
             $statement->bindValue(':password', $user->getPassword());
             $statement->bindValue(':created_at', $user->getCreatedAt()->format('Y-m-d H:i:s'));
             $statement->execute();
-            header('Location: /home'); 
+            $_SESSION['registered'] = 'Successfull registration. Fill form below for login.';
+            header('Location: /login'); 
         } else {
-            session_start();
             $_SESSION['errors'] = $errors;
             header('Location: /register');
         }

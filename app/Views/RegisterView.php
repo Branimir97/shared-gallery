@@ -68,7 +68,7 @@
       </div>
     </nav>
 
-    <div class="container text-center mt-2 mb-3">
+    <div class="container text-center pt-2 mb-3">
       <?php
         session_start();
         if(isset($_SESSION['errors'])) {
