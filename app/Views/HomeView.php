@@ -8,50 +8,59 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-      <!-- FontAwesome -->
-      <script src="https://kit.fontawesome.com/6aa1bd9ffa.js" crossorigin="anonymous"></script>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/6aa1bd9ffa.js" crossorigin="anonymous"></script>
+
     <title>
       Shared gallery
     </title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/home">
-          Shared gallery
-          <i class="fas fa-camera-retro"></i>
-        </a>
-        <button class="navbar-toggler" type="button" 
-                data-toggle="collapse" data-target="#navbarNavAltMarkup" 
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" 
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="/home">
-              Home
-              <i class="fas fa-house-damage"></i>
+      <a class="navbar-brand" href="/home">
+        Shared gallery
+        <i class="fas fa-camera-retro"></i>
+      </a>
+      <button class="navbar-toggler" type="button" 
+              data-toggle="collapse" data-target="#navbarNavAltMarkup" 
+              aria-controls="navbarNavAltMarkup" aria-expanded="false" 
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <a class="nav-item nav-link" href="/home">
+            Home
+            <i class="fas fa-house-damage"></i>
+          </a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Menu
+              <i class="fas fa-chevron-circle-down"></i>
             </a>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown link
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">
+                Management
+                <i class="fas fa-images"></i>
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-              </div>
-            </li>
-            <a class="nav-item nav-link" href="/login">
-              Login
-              <i class="fas fa-sign-in-alt"></i>
-            </a>
-            <a class="nav-item nav-link" href="/register">
-              Register
-              <i class="fas fa-user-plus"></i>
-            </a>
-          </div>
+              <a class="dropdown-item" href="#">
+                My account
+                <i class="fas fa-user-circle"></i>
+              </a>
+            </div>
+          </li>
+          <a class="nav-item nav-link" href="/login">
+            Login
+            <i class="fas fa-sign-in-alt"></i>
+          </a>
+          <a class="nav-item nav-link" href="/register">
+            Register
+            <i class="fas fa-user-plus"></i>
+          </a>
         </div>
+      </div>
     </nav>
+    
     <div class="container text-center mt-2">
       <button class="p-2 btn btn-outline-success">
           Get total number of <strong>Shared gallery</strong> photos
