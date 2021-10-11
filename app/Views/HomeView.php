@@ -52,7 +52,7 @@
                 </a>
               </div>
             </li>
-            <a class="nav-item nav-link" href="/login">
+            <a class="nav-item nav-link" href="/logout">
               Logout
               <i class="fas fa-sign-in-alt"></i>
             </a>
