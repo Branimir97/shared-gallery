@@ -56,33 +56,35 @@
           Register form
         </h2>
         <i class="fas fa-user-plus"></i>
-    <form>
+    <form action="/register/save" method="POST">
       <div class="form-group">
         <label for="username">
           Username
         </label>
-        <input type="text" class="form-control" id="username" placeholder="e.g. Branimir97">
+        <input type="text" class="form-control" id="username" name="username"
+               placeholder="e.g. Branimir97" required>
       </div>
       <div class="form-group">
         <label for="email">
           Email address
         </label>
-        <input type="email" class="form-control" id="email" placeholder="e.g. branimir@gmail.com">
+        <input type="email" class="form-control" id="email" name="email"
+               placeholder="e.g. branimir@gmail.com" required>
       </div>
       <div class="form-group">
         <label for="password">
           Password
         </label>
-        <input type="password" class="form-control" id="password" 
-               placeholder="e.g. 123!aA!123">
+        <input type="password" class="form-control" id="password" name="password"
+               placeholder="e.g. 123!aA!123" required>
         <small>Password must contain min 8 characters.</small>
       </div>
       <div class="form-group">
         <label for="repeatPassword">
           Repeat password
         </label>
-        <input type="password" class="form-control" id="repeatPassword" 
-               placeholder="e.g. 123ab123">
+        <input type="password" class="form-control" id="repeatPassword" name="repeatPassword"
+               placeholder="e.g. 123ab123" required>
         <small>
           Passwords must match.
         </small>
@@ -93,7 +95,7 @@
           Remember me
         </label>
       </div>
-      <button type="submit" class="btn btn-success mt-2 mb-1">
+      <button type="submit" name="submit" class="btn btn-success mt-2 mb-1">
         Register
       </button>
     </form>
