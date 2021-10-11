@@ -32,6 +32,15 @@
               Home
               <i class="fas fa-house-damage"></i>
             </a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown link
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+              </div>
+            </li>
             <a class="nav-item nav-link" href="/login">
               Login
               <i class="fas fa-sign-in-alt"></i>
@@ -40,7 +49,7 @@
               Register
               <i class="fas fa-user-plus"></i>
             </a>
-            </div>
+          </div>
         </div>
     </nav>
     <div class="container text-center mt-2">

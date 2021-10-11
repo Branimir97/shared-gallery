@@ -16,7 +16,7 @@
   
     <!-- CSS -->
     <style>
-          <?php include "css/register.css"?>
+          <?php include "css/auth.css"?>
     </style>
     <title>
       Shared gallery
@@ -24,81 +24,75 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/home">
-          Shared gallery
-          <i class="fas fa-camera-retro"></i>
-        </a>
-        <button class="navbar-toggler" type="button" 
-                data-toggle="collapse" data-target="#navbarNavAltMarkup" 
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" 
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-              <a class="nav-item nav-link" href="/home">
-                Home
-                <i class="fas fa-house-damage"></i>
-              </a>
-              <a class="nav-item nav-link" href="/login">
-                Login
-                <i class="fas fa-sign-in-alt"></i>
-              </a>
-              <a class="nav-item nav-link" href="/register">
-                Register
-                <i class="fas fa-user-plus"></i>
-              </a>
-            </div>
-        </div>
+      <a class="navbar-brand" href="/home">
+        Shared gallery
+        <i class="fas fa-camera-retro"></i>
+      </a>
+      <button class="navbar-toggler" type="button" 
+              data-toggle="collapse" data-target="#navbarNavAltMarkup" 
+              aria-controls="navbarNavAltMarkup" aria-expanded="false" 
+              aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="/home">
+              Home
+              <i class="fas fa-house-damage"></i>
+            </a>
+            <a class="nav-item nav-link" href="/login">
+              Login
+              <i class="fas fa-sign-in-alt"></i>
+            </a>
+            <a class="nav-item nav-link" href="/register">
+              Register
+              <i class="fas fa-user-plus"></i>
+            </a>
+          </div>
+      </div>
     </nav>
     <div class="container text-center mt-2 mb-3">
-        <h2 class="p-3">
-          Register form
-        </h2>
-        <i class="fas fa-user-plus"></i>
-    <form action="/register/save" method="POST">
-      <div class="form-group">
-        <label for="username">
-          Username
-        </label>
-        <input type="text" class="form-control" id="username" name="username"
-               placeholder="e.g. Branimir97" required>
-      </div>
-      <div class="form-group">
-        <label for="email">
-          Email address
-        </label>
-        <input type="email" class="form-control" id="email" name="email"
-               placeholder="e.g. branimir@gmail.com" required>
-      </div>
-      <div class="form-group">
-        <label for="password">
-          Password
-        </label>
-        <input type="password" class="form-control" id="password" name="password"
-               placeholder="e.g. 123!aA!123" required>
-        <small>Password must contain min 8 characters.</small>
-      </div>
-      <div class="form-group">
-        <label for="repeatPassword">
-          Repeat password
-        </label>
-        <input type="password" class="form-control" id="repeatPassword" name="repeatPassword"
-               placeholder="e.g. 123ab123" required>
-        <small>
-          Passwords must match.
-        </small>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">
-          Remember me
-        </label>
-      </div>
-      <button type="submit" name="submit" class="btn btn-success mt-2 mb-1">
-        Register
-      </button>
-    </form>
+      <h2 class="p-3">
+        Register form
+      </h2>
+      <i class="fas fa-user-plus"></i>
+      <form action="/register/save" method="POST">
+        <div class="form-group">
+          <label for="username">
+            Username
+          </label>
+          <input type="text" class="form-control" id="username" name="username"
+                placeholder="e.g. Branimir97" required>
+        </div>
+        <div class="form-group">
+          <label for="email">
+            Email address
+          </label>
+          <input type="email" class="form-control" id="email" name="email"
+                placeholder="e.g. branimir@gmail.com" required>
+        </div>
+        <div class="form-group">
+          <label for="password">
+            Password
+          </label>
+          <input type="password" class="form-control" id="password" name="password"
+                placeholder="e.g. 123!aA!123" required>
+          <small>Password must contain min 8 characters.</small>
+        </div>
+        <div class="form-group">
+          <label for="repeatPassword">
+            Repeat password
+          </label>
+          <input type="password" class="form-control" id="repeatPassword" name="repeatPassword"
+                placeholder="e.g. 123ab123" required>
+          <small>
+            Passwords must match.
+          </small>
+        </div>
+        <button type="submit" name="submit" class="btn btn-success mt-2 mb-1">
+          Register
+        </button>
+      </form>
     </div>
    
     <!-- Optional JavaScript -->

@@ -10,41 +10,74 @@
 
       <!-- FontAwesome -->
       <script src="https://kit.fontawesome.com/6aa1bd9ffa.js" crossorigin="anonymous"></script>
+
+      <!-- CSS -->
+    <style>
+          <?php include "css/auth.css"?>
+    </style>
     <title>
       Shared gallery
     </title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/home">
-          Shared gallery
-          <i class="fas fa-camera-retro"></i>
+      <a class="navbar-brand" href="/home">
+        Shared gallery
+        <i class="fas fa-camera-retro"></i>
+      </a>
+      <button class="navbar-toggler" type="button" 
+              data-toggle="collapse" data-target="#navbarNavAltMarkup" 
+              aria-controls="navbarNavAltMarkup" aria-expanded="false" 
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link" href="/home">
+          Home
+          <i class="fas fa-house-damage"></i>
         </a>
-        <button class="navbar-toggler" type="button" 
-                data-toggle="collapse" data-target="#navbarNavAltMarkup" 
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" 
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="/home">
-              Home
-              <i class="fas fa-house-damage"></i>
-            </a>
-            <a class="nav-item nav-link" href="/login">
-              Login
-              <i class="fas fa-sign-in-alt"></i>
-            </a>
-            <a class="nav-item nav-link" href="/register">
-              Register
-              <i class="fas fa-user-plus"></i>
-            </a>
-            </div>
+        <a class="nav-item nav-link" href="/login">
+          Login
+          <i class="fas fa-sign-in-alt"></i>
+        </a>
+        <a class="nav-item nav-link" href="/register">
+          Register
+          <i class="fas fa-user-plus"></i>
+        </a>
         </div>
+      </div>
     </nav>
-    <div class="container text-center mt-2">
-        <h2>Login</h2>
+    <div class="container text-center mt-2 mb-3">
+      <h2 class="p-3">
+        Login form
+      </h2>
+      <i class="fas fa-sign-in-alt"></i>
+      <form action="/register/save" method="POST">
+        <div class="form-group">
+          <label for="username">
+            Username/Email
+          </label>
+          <input type="text" class="form-control" id="username" name="username"
+                placeholder="Your username or email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">
+            Password
+          </label>
+          <input type="password" class="form-control" id="password" name="password"
+                placeholder="Your password" required>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">
+            Remember me
+          </label>
+        </div>
+        <button type="submit" name="submit" class="btn btn-success mt-2 mb-1">
+          Login
+        </button>
+      </form>
     </div>
    
     <!-- Optional JavaScript -->

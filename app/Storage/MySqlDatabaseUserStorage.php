@@ -16,7 +16,6 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
     }
 
     public function save(User $user) {
-        
         $sql = 
             "INSERT INTO user(username, email, password, created_at)
              VALUES (:username, :email, :password, :created_at)";
