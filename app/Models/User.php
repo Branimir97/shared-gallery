@@ -46,7 +46,7 @@ class User
         return $this->password;
     }
 
-    public function setPassword($password)
+    public function setPassword(string $password)
     {
         $this->password = $password;    
     }

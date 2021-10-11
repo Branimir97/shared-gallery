@@ -33,6 +33,9 @@
             Home
             <i class="fas fa-house-damage"></i>
           </a>
+          <?php 
+          session_start();
+          if(isset($_SESSION['loggedIn'])): ?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Menu
@@ -50,6 +53,11 @@
             </div>
           </li>
           <a class="nav-item nav-link" href="/login">
+            Logout
+            <i class="fas fa-sign-in-alt"></i>
+          </a>
+          <?php else: ?>
+          <a class="nav-item nav-link" href="/login">
             Login
             <i class="fas fa-sign-in-alt"></i>
           </a>
@@ -57,11 +65,22 @@
             Register
             <i class="fas fa-user-plus"></i>
           </a>
+          <?php endif; ?>
         </div>
       </div>
     </nav>
     
     <div class="container text-center mt-2">
+      <?php
+        if(isset($_SESSION['loggedInMessage'])) {
+          echo '
+            <p class="bg-success text-white p-2 mb-2">
+              '.$_SESSION['loggedInMessage'].'
+            </p>
+          ';
+        }
+        unset($_SESSION['loggedInMessage']);
+      ?>
       <button class="p-2 btn btn-outline-success">
           Get total number of <strong>Shared gallery</strong> photos
       </button>

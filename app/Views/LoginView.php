@@ -75,6 +75,15 @@
             </p>
           ';
         }
+        if(isset($_SESSION['errors'])) {
+          foreach($_SESSION['errors'] as $error) {
+            echo '
+              <p class="bg-danger text-white p-2 mb-2">
+                '.$error.'
+              </p>
+            ';
+          }
+        }
         session_destroy();
       ?>
       <h2 class="p-3">

@@ -71,6 +71,43 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
     }
 
     public function auth(User $user) {
-        
+        $errors = [];
+        $sql= 
+            'SELECT * FROM user';
+        $statement = $this->dbConn->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_OBJ);
+        $statement->execute();
+
+        $registeredUsers = $statement->fetchAll();
+        $registered = true;
+        foreach($registeredUsers as $registeredUser) {
+            if(!is_null($user->getUsername())) {
+                if($registeredUser->username !== $user->getUsername()) {
+                    $errors[] = 'User with this username does not exist.';
+                    $registered = false;
+                }
+            } 
+            else if(!is_null($user->getEmail())) {
+                if($registeredUser->email !== $user->getEmail()) {
+                    $errors[] = 'User with this email does not exist.';
+                    $registered = false;
+                }
+            } 
+            if(!$registered) {
+                break;
+            }
+            if(!password_verify($user->getPassword(), $registeredUser->password)) {
+                    $errors[] = 'Wrong password.';
+            } 
+        }
+        session_start();
+        if(count($errors) === 0) {
+            $_SESSION['loggedIn'] = true;
+            $_SESSION['loggedInMessage'] = 'Successfully logged in.';
+            header('Location: /home');
+        } else {
+            $_SESSION['errors'] = $errors;
+            header('Location: /login');
+        }
     }
 }
