@@ -25,6 +25,7 @@ class RegisterController extends View
                 $user->setUsername($_POST['username']); 
                 $user->setEmail($_POST['email']);
                 $user->setPassword($_POST['password']);
+                $user->setRepeatedPassword($_POST['repeatPassword']);
                 $storage = new MySqlDatabaseUserStorage();
                 $storage->save($user);
             }

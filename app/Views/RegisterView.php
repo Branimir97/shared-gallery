@@ -69,6 +69,19 @@
     </nav>
 
     <div class="container text-center mt-2 mb-3">
+      <?php
+        session_start();
+        if(isset($_SESSION['errors'])) {
+          foreach($_SESSION['errors'] as $error) {
+            echo '
+              <p class="bg-danger text-white p-2 mb-2">
+                '.$error.'
+              </p>
+            ';
+          }
+        }
+        session_destroy();
+      ?>
       <h2 class="p-3">
         Register form
       </h2>
@@ -94,7 +107,9 @@
           </label>
           <input type="password" class="form-control" id="password" name="password"
                 placeholder="e.g. 123!aA!123" required>
-          <small>Password must contain min 8 characters.</small>
+          <small>
+            Password must contain min. 8 characters, 1 uppercase letter & 1 number.
+          </small>
         </div>
         <div class="form-group">
           <label for="repeatPassword">

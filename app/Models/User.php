@@ -8,6 +8,7 @@ class User
     private $username;
     private $email;
     private $password;
+    private $repeatedPassword;
     private $createdAt;
 
     public function getId()
@@ -48,6 +49,14 @@ class User
     public function setPassword($password)
     {
         $this->password = $password;    
+    }
+
+    public function getRepeatedPassword() {
+        return $this->repeatPassword;
+    }
+
+    public function setRepeatedPassword($password) {
+        $this->repeatPassword = $password;
     }
 
     public function getCreatedAt() {
