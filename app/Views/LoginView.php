@@ -81,7 +81,7 @@
         Login form
       </h2>
       <i class="fas fa-sign-in-alt"></i>
-      <form action="/register/save" method="POST">
+      <form action="/login/auth" method="POST">
         <div class="form-group">
           <label for="username">
             Username/Email

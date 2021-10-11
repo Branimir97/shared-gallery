@@ -53,10 +53,14 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
                 "INSERT INTO user(username, email, password, created_at)
                 VALUES (:username, :email, :password, :created_at)";
             $statement = $this->dbConn->prepare($sql);
-            $statement->bindValue(':username', $user->getUsername());
-            $statement->bindValue(':email', $user->getEmail());
-            $statement->bindValue(':password', $user->getPassword());
-            $statement->bindValue(':created_at', $user->getCreatedAt()->format('Y-m-d H:i:s'));
+            $statement->bindValue(':username', 
+                        filter_var($user->getUsername(), FILTER_SANITIZE_STRING));
+            $statement->bindValue(':email', 
+                        filter_var($user->getEmail(), FILTER_SANITIZE_EMAIL));
+            $statement->bindValue(':password', 
+                        password_hash($user->getPassword(), PASSWORD_DEFAULT));
+            $statement->bindValue(':created_at', 
+                        $user->getCreatedAt()->format('Y-m-d H:i:s'));
             $statement->execute();
             $_SESSION['registered'] = 'Successfull registration. Fill form below for login.';
             header('Location: /login'); 
@@ -64,7 +68,9 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
             $_SESSION['errors'] = $errors;
             header('Location: /register');
         }
-        var_dump($errors);
+    }
+
+    public function auth(User $user) {
         
     }
 }
