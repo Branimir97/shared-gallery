@@ -104,6 +104,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         if(count($errors) === 0) {
             $_SESSION['loggedIn'] = true;
             $_SESSION['loggedInMessage'] = 'Successfully logged in.';
+            $_SESSION['loggedInUser'] = $user->getUsername();
             header('Location: /home');
         } else {
             $_SESSION['errors'] = $errors;

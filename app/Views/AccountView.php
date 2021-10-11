@@ -46,7 +46,7 @@
                   Management
                   <i class="fas fa-images"></i>
                 </a>
-                <a class="dropdown-item" href="/account">
+                <a class="dropdown-item" href="/acount">
                   My account
                   <i class="fas fa-user-circle"></i>
                 </a>
@@ -81,9 +81,12 @@
         }
         unset($_SESSION['loggedInMessage']);
       ?>
-      <button class="p-2 btn btn-outline-success">
-          Get total number of <strong>Shared gallery</strong> photos
-      </button>
+      <p>
+          You're logged in as 
+          <strong>
+              <?php echo $_SESSION['loggedInUser']; ?>
+          </strong>
+      </p>
     </div>
    
     <!-- Optional JavaScript -->
