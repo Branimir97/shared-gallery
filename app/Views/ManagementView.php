@@ -48,7 +48,7 @@
                 <i class="fas fa-chevron-circle-down"></i>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/management">
+                <a class="dropdown-item" href="#">
                   Management
                   <i class="fas fa-images"></i>
                 </a>
@@ -76,7 +76,7 @@
       </div>
     </nav>
     
-    <div class="container text-center mt-2">        
+    <div class="container text-center mt-2">
       <p>
           You're logged in as 
           <strong>
@@ -85,14 +85,10 @@
       </p>
       <hr>
       <div class="text-right">
-        <a href="#" class="btn btn-info">
-          Change password
+        <a href="#" class="btn btn-success">
+            Upload new photo
         </a>
-        <a href="#" class="btn btn-danger">
-          Delete account
-        </a>        
       </div>
-      <p>Account info</p>
     </div>
    
     <!-- Optional JavaScript -->

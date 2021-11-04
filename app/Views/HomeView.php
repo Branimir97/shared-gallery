@@ -44,7 +44,7 @@
                 <i class="fas fa-chevron-circle-down"></i>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/management">
                   Management
                   <i class="fas fa-images"></i>
                 </a>
