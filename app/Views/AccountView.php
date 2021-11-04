@@ -93,6 +93,7 @@
         </a>        
       </div>
       <p>Account info</p>
+      
     </div>
    
     <!-- Optional JavaScript -->

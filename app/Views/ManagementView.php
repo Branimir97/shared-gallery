@@ -90,6 +90,30 @@
         </a>
       </div>
     </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <caption>
+                Photos list
+            </caption>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email address</th>
+                    <th>Address</th>
+                    <th>Photos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
