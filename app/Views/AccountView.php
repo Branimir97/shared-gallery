@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['loggedIn'])){
+    header('Location: /home');
+  } 
+?>
+
 <!doctype html>
 <html lang="en">
   <head>

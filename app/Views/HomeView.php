@@ -37,7 +37,9 @@
             session_start();
             if(isset($_SESSION['loggedIn'])): ?>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" 
+                id="navbarDropdownMenuLink" data-toggle="dropdown" 
+                aria-haspopup="true" aria-expanded="false">
                 Menu
                 <i class="fas fa-chevron-circle-down"></i>
               </a>

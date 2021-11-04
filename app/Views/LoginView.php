@@ -64,7 +64,7 @@
               '.$_SESSION['registered'].'
             </p>
           ';
-          session_unset($_SESSION['registered']);
+          session_unset();
         }
         if(isset($_SESSION['errors'])) {
           foreach($_SESSION['errors'] as $error) {
@@ -74,7 +74,7 @@
               </p>
             ';
           }
-          session_unset($_SESSION['errors']);
+          session_unset();
         }
       ?>
       <h2 class="p-3">

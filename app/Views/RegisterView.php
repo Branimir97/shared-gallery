@@ -69,7 +69,7 @@
               </p>
             ';
           }
-          session_unset($_SESSION['errors']);
+          session_unset();
         }
       ?>
       <h2 class="p-3">
