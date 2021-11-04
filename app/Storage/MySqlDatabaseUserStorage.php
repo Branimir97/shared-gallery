@@ -111,4 +111,13 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
             header('Location: /login');
         }
     }
+
+    public function findByUsername(String $username) {
+        $sql = "SELECT * FROM user WHERE username = :username";
+        $statement = $this->dbConn->prepare($sql);
+        $statement->bindValue('username', $username);
+        $statement->setFetchMode(\PDO::FETCH_OBJ);
+        $statement->execute();
+        return $statement->fetch();
+    }
 }

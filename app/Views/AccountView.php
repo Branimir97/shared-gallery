@@ -1,10 +1,3 @@
-<?php
-  session_start();
-  if(!isset($_SESSION['loggedIn'])){
-    header('Location: /home');
-  } 
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,6 +10,10 @@
 
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/6aa1bd9ffa.js" crossorigin="anonymous"></script>
+
+    <style>
+          <?php include "css/account.css"?>
+    </style>
 
     <title>
       Shared gallery
@@ -92,8 +89,29 @@
           Delete account
         </a>        
       </div>
-      <p>Account info</p>
-      
+      <p>Account details</p>
+      <div class="account-details">
+          <small>Username:</small>
+          <p>
+            <strong>
+              <?= $user->username ?>
+            </strong>
+          </p>
+          <hr>
+          <small>Email address:</small>
+          <p>
+            <strong>
+              <?= $user->email ?>
+            </strong>
+          </p>
+          <hr>
+          <small>Account created:</small>
+          <p>
+            <strong>
+              <?= $createdAt?>
+            </strong>
+          </p>
+      </div>
     </div>
    
     <!-- Optional JavaScript -->
