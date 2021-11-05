@@ -33,4 +33,14 @@ class ManagementController extends View
         }
     }
 
+    public function uploadPhotoAction() 
+    {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(isset($_POST['submit'])) {
+                $files = $_FILES['files'];
+                var_dump($files);
+            }
+        }
+    }
+
 }

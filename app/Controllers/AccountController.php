@@ -55,7 +55,8 @@ class AccountController extends View
         }
     }
 
-    public function deleteAccountAction() {
+    public function deleteAccountAction() 
+    {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['submit'])) {
                 $userStorage = new MySqlDatabaseUserStorage();

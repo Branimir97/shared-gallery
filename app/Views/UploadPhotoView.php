@@ -114,7 +114,7 @@
               Select file
             </label>
             <input type="file" class="form-control" id="file" 
-                name="file" multiple required>
+                name="files" multiple required>
           </div>
           <button type="submit" name="submit" class="btn btn-outline-primary">
             Upload photo

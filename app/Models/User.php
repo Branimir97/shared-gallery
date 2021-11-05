@@ -16,7 +16,7 @@ class User
         return $this->id;
     }
     
-    public function setId($id)
+    public function setId(int $id)
     {
         $this->id = $id;
     }
@@ -56,7 +56,7 @@ class User
         return $this->repeatPassword;
     }
 
-    public function setRepeatedPassword($password) 
+    public function setRepeatedPassword(string $password) 
     {
         $this->repeatPassword = $password;
     }
