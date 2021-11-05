@@ -79,6 +79,12 @@
     </nav>
     
     <div class="container text-center mt-2"> 
+      <div class="text-left">
+        <a href="/account">
+          <i class="fas fa-long-arrow-alt-left"></i>
+          Back to account details
+        </a>
+      </div>
       <p>
           You're logged in as 
           <strong>
