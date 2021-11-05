@@ -1,6 +1,7 @@
 <?php
 
 namespace Controllers;
+session_start();
 use Models\View;
 use Exceptions\TemplateNotFoundException;
 
@@ -8,7 +9,6 @@ class ManagementController extends View
 {
     public function indexAction() 
     {
-        session_start();
         if(!isset($_SESSION['loggedIn'])){
             header('Location: /home');
         } else {
@@ -19,4 +19,18 @@ class ManagementController extends View
             }
         }
     }
+
+    public function uploadAction() 
+    {
+        if(!isset($_SESSION['loggedIn'])){
+            header('Location: /home');
+        } else {
+            try {
+                echo parent::render('UploadPhoto');
+            } catch(TemplateNotFoundException $e) {
+                echo $e->getMessage();
+            }
+        }
+    }
+
 }

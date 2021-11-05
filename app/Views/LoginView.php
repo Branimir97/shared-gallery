@@ -19,6 +19,9 @@
           <?php include "css/auth.css"?>
     </style>
 
+    <!-- Icon -->
+    <link rel="icon" href="../Public/Icons/logo.png">
+    
     <title>
       Login
     </title>

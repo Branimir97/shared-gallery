@@ -15,9 +15,12 @@
     <script src="https://kit.fontawesome.com/6aa1bd9ffa.js" crossorigin="anonymous"></script>
 
     <style>
-          <?php include "css/account.css"?>
+          <?php include "css/container.css"?>
     </style>
 
+    <!-- Icon -->
+    <link rel="icon" href="../Public/Icons/logo.png">
+    
     <title>
       Change password
     </title>

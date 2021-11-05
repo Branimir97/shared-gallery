@@ -14,11 +14,15 @@
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/6aa1bd9ffa.js" crossorigin="anonymous"></script>
 
+    <style>
+          <?php include "css/container.css"?>
+    </style>
+
     <!-- Icon -->
     <link rel="icon" href="../Public/Icons/logo.png">
 
     <title>
-      Shared gallery
+      Upload photo
     </title>
   </head>
   <body>
@@ -77,24 +81,46 @@
       </div>
     </nav>
     
-    <div class="container text-center mt-2">
-      <?php
-        if(isset($_SESSION['loggedInMessage'])) {
-          echo '
-            <p class="bg-success text-white p-2 mb-2">
-              '.$_SESSION['loggedInMessage'].'
-            </p>
-          ';
-        }
-        unset($_SESSION['loggedInMessage']);
-      ?>
-      <button class="p-2 btn btn-outline-success">
-          Get total number of 
+    <div class="container text-center mt-2"> 
+      <div class="text-left">
+        <a href="/management">
+          <i class="fas fa-long-arrow-alt-left"></i>
+          Back to management
+        </a>
+      </div>
+      <p>
+          You're logged in as 
           <strong>
-            Shared gallery
-          </strong> 
-          photos
-      </button>
+              <?php echo $_SESSION['loggedInUser']; ?>
+          </strong>
+      </p>
+      <hr>
+      <div class="uploadPhoto-form">
+        <?php
+          if(isset($_SESSION['errors'])) {
+            foreach($_SESSION['errors'] as $error) {
+              echo '
+                <p class="bg-danger text-white p-2 mb-2">
+                  '.$error.'
+                </p>
+              ';
+            }
+            unset($_SESSION['errors']);
+          }
+        ?>       
+        <form action="/management/uploadPhoto" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="file">
+              Select file
+            </label>
+            <input type="file" class="form-control" id="file" 
+                name="file" multiple required>
+          </div>
+          <button type="submit" name="submit" class="btn btn-outline-primary">
+            Upload photo
+          </button>
+        </form>
+      </div>
     </div>
    
     <!-- Optional JavaScript -->

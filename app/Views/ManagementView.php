@@ -16,6 +16,9 @@
         crossorigin="anonymous">
     </script>
 
+    <!-- Icon -->
+    <link rel="icon" href="../Public/Icons/logo.png">
+    
     <title>
       Management
     </title>
@@ -85,7 +88,7 @@
       </p>
       <hr>
       <div class="text-right mb-3">
-        <a href="#" class="btn btn-success">
+        <a href="/management/upload" class="btn btn-success">
             Upload new photo
         </a>
       </div>
