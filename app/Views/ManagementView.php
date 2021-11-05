@@ -17,7 +17,7 @@
     </script>
 
     <title>
-      Shared gallery
+      Management
     </title>
   </head>
   <body>
@@ -96,18 +96,34 @@
               </caption>
               <thead>
                   <tr>
-                      <th>Username</th>
-                      <th>Email address</th>
-                      <th>Address</th>
-                      <th>Photos</th>
+                      <th>
+                        Username
+                      </th>
+                      <th>
+                        Email address
+                      </th>
+                      <th>
+                        Address
+                      </th>
+                      <th>
+                        Photos
+                      </th>
                   </tr>
               </thead>
               <tbody>
                   <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>
+
+                      </td>
+                      <td>
+
+                      </td>
+                      <td>
+
+                      </td>
+                      <td>
+                        
+                      </td>
                   </tr>
               </tbody>
           </table>

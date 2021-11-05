@@ -20,7 +20,7 @@
     </style>
 
     <title>
-      Shared gallery
+      Login
     </title>
   </head>
   <body>
@@ -61,7 +61,6 @@
               '.$_SESSION['registered'].'
             </p>
           ';
-          session_unset();
         }
         if(isset($_SESSION['errors'])) {
           foreach($_SESSION['errors'] as $error) {
@@ -71,8 +70,8 @@
               </p>
             ';
           }
-          session_unset();
         }
+        session_unset();
       ?>
       <h2 class="p-3">
         Login form
@@ -104,7 +103,10 @@
         </button>
       </form>
       <p class="mt-2">
-        No account? Register <a href="/register">here</a>.
+        No account? Register 
+        <a href="/register">
+          here
+        </a>.
       </p>
     </div>
    

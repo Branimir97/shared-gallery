@@ -8,6 +8,7 @@ class HomeController extends View
 {
     public function indexAction() 
     {
+        session_start();
         try{
             echo parent::render('Home');
         } catch(TemplateNotFoundException $e) {

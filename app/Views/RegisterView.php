@@ -1,10 +1,3 @@
-<?php
-  session_start();
-  if(isset($_SESSION['loggedIn'])){
-    header('Location: /home');
-  } 
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,7 +20,7 @@
     </style>
 
     <title>
-      Shared gallery
+      Register
     </title>
   </head>
   <body>

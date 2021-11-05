@@ -19,7 +19,7 @@
     </style>
 
     <title>
-      Shared gallery
+      Account details
     </title>
   </head>
   <body>
@@ -87,10 +87,10 @@
       </p>
       <hr>
       <div class="text-right mb-3">
-        <a href="#" class="btn btn-info mt-1">
+        <a href="/account/password" class="btn btn-info mt-1">
           Change password
         </a>
-        <a href="#" class="btn btn-danger mt-1">
+        <a href="/account/delete" class="btn btn-danger mt-1">
           Delete account
         </a>        
       </div>

@@ -1,6 +1,7 @@
 <?php
 
 namespace Controllers;
+session_start();
 use Models\View;
 use Exceptions\TemplateNotFoundException;
 use Storage\MySqlDatabaseUserStorage;
@@ -9,7 +10,6 @@ class AccountController extends View
 {
     public function indexAction() 
     {
-        session_start();
         if(!isset($_SESSION['loggedIn'])){
             header('Location: /home');
         } else {
@@ -26,5 +26,17 @@ class AccountController extends View
                 echo $e->getMessage();
             }
         } 
+    }
+
+    public function passwordAction() {
+        if(!isset($_SESSION['loggedIn'])){
+            header('Location: /home');
+        } else {
+            try {
+                echo parent::render('ChangePassword');
+            } catch(TemplateNotFoundException $e) {
+                echo $e->getMessage();
+            }
+        }
     }
 }

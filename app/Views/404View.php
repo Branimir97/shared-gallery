@@ -31,7 +31,10 @@
                 </u>
               </strong>
           </p>
-          Return to <a href="/home">homepage</a>. 
+          Return to 
+          <a href="/home">
+            homepage
+          </a>. 
       </div>
 
     <!-- Optional JavaScript -->

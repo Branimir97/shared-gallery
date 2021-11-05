@@ -14,8 +14,12 @@
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/6aa1bd9ffa.js" crossorigin="anonymous"></script>
 
+    <style>
+          <?php include "css/account.css"?>
+    </style>
+
     <title>
-      Shared gallery
+      Change password
     </title>
   </head>
   <body>
@@ -74,24 +78,42 @@
       </div>
     </nav>
     
-    <div class="container text-center mt-2">
-      <?php
-        if(isset($_SESSION['loggedInMessage'])) {
-          echo '
-            <p class="bg-success text-white p-2 mb-2">
-              '.$_SESSION['loggedInMessage'].'
-            </p>
-          ';
-        }
-        unset($_SESSION['loggedInMessage']);
-      ?>
-      <button class="p-2 btn btn-outline-success">
-          Get total number of 
+    <div class="container text-center mt-2">        
+      <p>
+          You're logged in as 
           <strong>
-            Shared gallery
-          </strong> 
-          photos
-      </button>
+              <?php echo $_SESSION['loggedInUser']; ?>
+          </strong>
+      </p>
+      <hr>
+      <div class="changePassword-form">
+        <form action="/account/changePassword" method="POST">
+          <div class="form-group">
+            <label for="currentPassword">
+              Current password
+            </label>
+            <input type="password" class="form-control" id="currentPassword" 
+                placeholder="Enter current password" required>
+          </div>
+          <div class="form-group">
+            <label for="newPassword">
+              New password
+            </label>
+            <input type="password" class="form-control" id="newPassword" 
+                placeholder="Enter new password" required>
+          </div>
+          <div class="form-group">
+            <label for="newPasswordRepeat">
+              Repeat new password
+            </label>
+            <input type="password" class="form-control" id="newPasswordRepeat" 
+                placeholder="Enter new password again" required>
+          </div>
+          <button type="submit" class="btn btn-outline-info">
+            Change password
+          </button>
+        </form>
+      </div>
     </div>
    
     <!-- Optional JavaScript -->
