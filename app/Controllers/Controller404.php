@@ -6,7 +6,8 @@ use Exceptions\TemplateNotFoundException;
 
 class Controller404 extends View
 {
-    public function __construct() {
+    public function __construct() 
+    {
         try {
             echo parent::render('404');
         } catch(TemplateNotFoundException $e) {

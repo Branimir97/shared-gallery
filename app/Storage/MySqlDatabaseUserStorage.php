@@ -10,12 +10,14 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
     private $db_instance;
     private $db_conn;
 
-    public function __construct() {
+    public function __construct() 
+    {
         $this->dbInstance = Database::getInstance();
         $this->dbConn = $this->dbInstance->getConnection();
     }
 
-    public function save(User $user) {
+    public function save(User $user) 
+    {
         $errors = [];
 
         $pattern = '/^(?=.*[A-Z])(?=.*[0-9]).{8,}$/';
@@ -70,7 +72,8 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         }
     }
 
-    public function auth(User $user) {
+    public function auth(User $user) 
+    {
         $errors = [];
         $sql= 
             'SELECT * FROM user';
@@ -112,7 +115,8 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         }
     }
 
-    public function findByUsername(String $username) {
+    public function findByUsername(String $username) 
+    {
         $sql = "SELECT * FROM user WHERE username = :username";
         $statement = $this->dbConn->prepare($sql);
         $statement->bindValue('username', $username);

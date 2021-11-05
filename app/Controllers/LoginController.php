@@ -9,15 +9,22 @@ use Exceptions\TemplateNotFoundException;
 
 class LoginController extends View
 {
-    public function indexAction() {
-        try {
-            echo parent::render('Login');
-        } catch(TemplateNotFoundException $e) {
-            echo $e->getMessage();
+    public function indexAction() 
+    {
+        session_start();
+        if(isset($_SESSION['loggedIn'])){
+            header('Location: /home');
+        } else {
+            try {
+                echo parent::render('Login');
+            } catch(TemplateNotFoundException $e) {
+                echo $e->getMessage();
+            }
         }
     }
 
-    public function authAction() {
+    public function authAction() 
+    {
         if($_SERVER['REQUEST_METHOD'] === "POST") {
             if(isset($_POST['submit'])) {
                 $user = new User();

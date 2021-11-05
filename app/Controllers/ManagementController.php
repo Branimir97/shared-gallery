@@ -8,10 +8,15 @@ class ManagementController extends View
 {
     public function indexAction() 
     {
-        try {
-            echo parent::render('Management');
-        } catch(TemplateNotFoundException $e) {
-            echo $e->getMessage();
+        session_start();
+        if(!isset($_SESSION['loggedIn'])){
+            header('Location: /home');
+        } else {
+            try {
+                echo parent::render('Management');
+            } catch(TemplateNotFoundException $e) {
+                echo $e->getMessage();
+            }
         }
     }
 }

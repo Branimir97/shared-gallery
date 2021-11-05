@@ -51,15 +51,18 @@ class User
         $this->password = $password;    
     }
 
-    public function getRepeatedPassword() {
+    public function getRepeatedPassword() 
+    {
         return $this->repeatPassword;
     }
 
-    public function setRepeatedPassword($password) {
+    public function setRepeatedPassword($password) 
+    {
         $this->repeatPassword = $password;
     }
 
-    public function getCreatedAt() {
+    public function getCreatedAt() 
+    {
         $this->createdAt = new \DateTime('now');
         return $this->createdAt;
     }

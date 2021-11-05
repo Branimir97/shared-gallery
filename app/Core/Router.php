@@ -6,7 +6,8 @@ use Controllers\Controller404;
 
 class Router
 {
-    public function route() {
+    public function route() 
+    {
         $uri = $_SERVER['REQUEST_URI'];
         $uriParts = explode('/', $uri);
         
