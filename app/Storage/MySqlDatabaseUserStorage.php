@@ -20,8 +20,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
     {
         $errors = [];
 
-        $pattern = '/^(?=.*[A-Z])(?=.*[0-9]).{8,}$/';
-        if(!preg_match($pattern, $user->getPassword())) { 
+        if(!$this->checkPattern($user->getPassword())) { 
             $errors[] = "Password strength is low.";
         }
         if($user->getPassword() !== $user->getRepeatedPassword()) {
@@ -49,7 +48,6 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
             }
         }
 
-        session_start();
         if(count($errors) === 0) {
             $sql = 
                 "INSERT INTO user(username, email, password, created_at)
@@ -103,7 +101,6 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
                     $errors[] = 'Wrong password.';
             } 
         }
-        session_start();
         if(count($errors) === 0) {
             $_SESSION['loggedIn'] = true;
             $_SESSION['loggedInMessage'] = 'Successfully logged in.';
@@ -115,13 +112,61 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         }
     }
 
-    public function findByUsername(String $username) 
+    public function findUserFromSession() 
     {
         $sql = "SELECT * FROM user WHERE username = :username";
         $statement = $this->dbConn->prepare($sql);
-        $statement->bindValue('username', $username);
+        $statement->bindValue('username', $_SESSION['loggedInUser']);
         $statement->setFetchMode(\PDO::FETCH_OBJ);
         $statement->execute();
         return $statement->fetch();
+    }
+
+    public function changePassword(String $currentPassword, 
+                                   String $newPassword, 
+                                   String $newPasswordRepeat) 
+    {
+        $errors = [];
+        $hashPassword = $this->getPassword();
+        if(!password_verify($currentPassword, $hashPassword)) {
+            $errors[] = "Incorrect current password.";
+        } else {
+            if(!$this->checkPattern($newPassword)) { 
+                $errors[] = "Password strength is low.";
+            } else {
+                if(checkPassword($newPassword, $newPasswordRepeat)) {
+                    //save
+                } else {
+                    $errors[] = "Passwords do not match.";
+                }
+            }
+            
+        }
+        $_SESSION['errors'] = $errors;
+    }
+
+    public function getPassword() {
+        $user = $this->findUserFromSession();
+        $sql = "SELECT password FROM user WHERE id = :id";
+        $statement = $this->dbConn->prepare($sql);
+        $statement->bindValue('id', $user->id);
+        $statement->setFetchMode(\PDO::FETCH_OBJ);
+        $statement->execute();
+        return $statement->fetchColumn();
+    }
+
+    public function checkPasswords($password1, $password2) 
+    {
+        return $password1 === $password2;
+    }
+
+    public function savePassword($password) {
+
+    }
+
+    public function checkPattern($password) 
+    {
+        $pattern = '/^(?=.*[A-Z])(?=.*[0-9]).{8,}$/';
+        return preg_match($pattern, $password);
     }
 }

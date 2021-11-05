@@ -1,6 +1,7 @@
 <?php
 
 namespace Controllers;
+session_start();
 use Models\View;
 use Models\User;
 use Storage\MySqlDatabaseUserStorage;
@@ -10,7 +11,6 @@ class RegisterController extends View
 {
     public function indexAction() 
     {
-        session_start();
         if(isset($_SESSION['loggedIn'])){
             header('Location: /home');
         } else {

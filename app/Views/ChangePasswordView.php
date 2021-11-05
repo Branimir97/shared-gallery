@@ -93,23 +93,23 @@
               Current password
             </label>
             <input type="password" class="form-control" id="currentPassword" 
-                placeholder="Enter current password" required>
+                name="currentPassword" placeholder="Enter current password" required>
           </div>
           <div class="form-group">
             <label for="newPassword">
               New password
             </label>
             <input type="password" class="form-control" id="newPassword" 
-                placeholder="Enter new password" required>
+                name="newPassword" placeholder="Enter new password" required>
           </div>
           <div class="form-group">
             <label for="newPasswordRepeat">
               Repeat new password
             </label>
             <input type="password" class="form-control" id="newPasswordRepeat" 
-                placeholder="Enter new password again" required>
+                name="newPasswordRepeat" placeholder="Enter new password again" required>
           </div>
-          <button type="submit" class="btn btn-outline-info">
+          <button type="submit" name="submit" class="btn btn-outline-info">
             Change password
           </button>
         </form>

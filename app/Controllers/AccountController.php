@@ -14,7 +14,7 @@ class AccountController extends View
             header('Location: /home');
         } else {
             $userStorage = new MySqlDatabaseUserStorage();
-            $user = $userStorage->findByUsername($_SESSION['loggedInUser']);
+            $user = $userStorage->findUserFromSession();
             $mysqlDate = strtotime($user->created_at);
             $createdAt = date('d.m.Y. H:i:s', $mysqlDate);
             try {
@@ -28,7 +28,8 @@ class AccountController extends View
         } 
     }
 
-    public function passwordAction() {
+    public function passwordAction() 
+    {
         if(!isset($_SESSION['loggedIn'])){
             header('Location: /home');
         } else {
@@ -36,6 +37,20 @@ class AccountController extends View
                 echo parent::render('ChangePassword');
             } catch(TemplateNotFoundException $e) {
                 echo $e->getMessage();
+            }
+        }
+    }
+
+    public function changePasswordAction() 
+    {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(isset($_POST['submit'])) {
+                $currentPassword = $_POST['currentPassword'];
+                $newPassword = $_POST['newPassword'];
+                $newPasswordRepeat = $_POST['newPasswordRepeat'];
+                $userStorage = new MySqlDatabaseUserStorage();
+                $userStorage->changePassword($currentPassword, 
+                        $newPassword, $newPasswordRepeat);
             }
         }
     }
