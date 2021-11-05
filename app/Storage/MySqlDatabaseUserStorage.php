@@ -20,7 +20,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
     {
         $errors = [];
 
-        if(!$this->checkPattern($user->getPassword())) { 
+        if(!$this->checkPasswordStrength($user->getPassword())) { 
             $errors[] = "Password strength is low.";
         }
         if($user->getPassword() !== $user->getRepeatedPassword()) {
@@ -131,21 +131,27 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         if(!password_verify($currentPassword, $hashPassword)) {
             $errors[] = "Incorrect current password.";
         } else {
-            if(!$this->checkPattern($newPassword)) { 
+            if(!$this->checkPasswordStrength($newPassword)) { 
                 $errors[] = "Password strength is low.";
             } else {
-                if(checkPassword($newPassword, $newPasswordRepeat)) {
-                    //save
+                if($this->checkPasswords($newPassword, $newPasswordRepeat)) {
+                    $this->savePassword($newPassword);
                 } else {
                     $errors[] = "Passwords do not match.";
                 }
             }
-            
         }
-        $_SESSION['errors'] = $errors;
+        if(count($errors) === 0) {
+            header('Location: /account');
+            $_SESSION['changedPassword'] = 'Password successfully changed.';
+        } else {
+            $_SESSION['errors'] = $errors;
+            header('Location: /account/password');
+        }
     }
 
-    public function getPassword() {
+    public function getPassword() 
+    {
         $user = $this->findUserFromSession();
         $sql = "SELECT password FROM user WHERE id = :id";
         $statement = $this->dbConn->prepare($sql);
@@ -160,11 +166,17 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         return $password1 === $password2;
     }
 
-    public function savePassword($password) {
-
+    public function savePassword($password) 
+    {
+        $sql = 
+            'UPDATE user SET password = :password WHERE username = :username';
+        $statement = $this->dbConn->prepare($sql);
+        $statement->bindValue(':username', $_SESSION['loggedInUser']);
+        $statement->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
+        $statement->execute();
     }
 
-    public function checkPattern($password) 
+    public function checkPasswordStrength($password) 
     {
         $pattern = '/^(?=.*[A-Z])(?=.*[0-9]).{8,}$/';
         return preg_match($pattern, $password);

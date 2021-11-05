@@ -11,4 +11,9 @@ interface UserStorageInterface
     public function changePassword(String $currentPassword, 
                                    String $newPassword, 
                                    String $newPasswordRepeat);
+    public function getPassword();
+    public function checkPasswords(String $password1, 
+                                   String $password2);
+    public function savePassword(String $password);
+    public function checkPasswordStrength(String $password);
 }

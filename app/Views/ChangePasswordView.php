@@ -78,7 +78,7 @@
       </div>
     </nav>
     
-    <div class="container text-center mt-2">        
+    <div class="container text-center mt-2"> 
       <p>
           You're logged in as 
           <strong>
@@ -87,6 +87,18 @@
       </p>
       <hr>
       <div class="changePassword-form">
+        <?php
+          if(isset($_SESSION['errors'])) {
+            foreach($_SESSION['errors'] as $error) {
+              echo '
+                <p class="bg-danger text-white p-2 mb-2">
+                  '.$error.'
+                </p>
+              ';
+            }
+            unset($_SESSION['errors']);
+          }
+        ?>       
         <form action="/account/changePassword" method="POST">
           <div class="form-group">
             <label for="currentPassword">

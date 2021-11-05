@@ -86,6 +86,16 @@
           </strong>
       </p>
       <hr>
+      <?php
+        if(isset($_SESSION['changedPassword'])) {
+          echo '
+            <p class="bg-success text-white p-2 mb-2">
+              '.$_SESSION['changedPassword'].'
+            </p>
+          ';
+          unset($_SESSION['changedPassword']);
+        }
+      ?>
       <div class="text-right mb-3">
         <a href="/account/password" class="btn btn-info mt-1">
           Change password
