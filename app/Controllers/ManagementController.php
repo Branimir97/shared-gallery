@@ -3,7 +3,9 @@
 namespace Controllers;
 session_start();
 use Models\View;
+use Models\Photo;
 use Exceptions\TemplateNotFoundException;
+use Services\UploadHelper;
 
 class ManagementController extends View
 {
@@ -38,9 +40,10 @@ class ManagementController extends View
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['submit'])) {
                 $files = $_FILES['files'];
-                var_dump($files);
+                $service = new UploadHelper();                
+                $newFileName = $service->uploadPhoto($files);
+                $photoStorage = new MySqlDatabasePhotoStorage();
             }
         }
     }
-
 }

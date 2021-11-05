@@ -1,6 +1,7 @@
 <?php
 
 namespace Models;
+use Models\User;
 
 class Photo
 {
@@ -21,12 +22,12 @@ class Photo
 
     public function getUser()
     {
-
+        return $this->user;
     }
 
-    public function setUser()
+    public function setUser(User $user)
     {
-
+        $this->user = $user;
     }
 
     public function getPath()

@@ -115,6 +115,9 @@
             </label>
             <input type="file" class="form-control" id="file" 
                 name="files" multiple required>
+            <small>
+              Allowed extensions: [.jpg, .png]
+            </small>
           </div>
           <button type="submit" name="submit" class="btn btn-outline-primary">
             Upload photo
