@@ -84,35 +84,34 @@
           </strong>
       </p>
       <hr>
-      <div class="text-right">
+      <div class="text-right mb-3">
         <a href="#" class="btn btn-success">
             Upload new photo
         </a>
       </div>
-    </div>
-
-    <div class="table-responsive">
-        <table class="table">
-            <caption>
-                Photos list
-            </caption>
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Email address</th>
-                    <th>Address</th>
-                    <th>Photos</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+      <div class="table-responsive">
+          <table class="table">
+              <caption>
+                  Photos list
+              </caption>
+              <thead>
+                  <tr>
+                      <th>Username</th>
+                      <th>Email address</th>
+                      <th>Address</th>
+                      <th>Photos</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
     </div>
    
      <!-- Optional JavaScript -->

@@ -86,31 +86,39 @@
           </strong>
       </p>
       <hr>
-      <div class="text-right">
-        <a href="#" class="btn btn-info">
+      <div class="text-right mb-3">
+        <a href="#" class="btn btn-info mt-1">
           Change password
         </a>
-        <a href="#" class="btn btn-danger">
+        <a href="#" class="btn btn-danger mt-1">
           Delete account
         </a>        
       </div>
-      <p>Account details</p>
+      <p>
+        Account details
+      </p>
       <div class="account-details">
-          <small>Username:</small>
+          <small>
+            Username:
+          </small>
           <p>
             <strong>
               <?= $user->username ?>
             </strong>
           </p>
           <hr>
-          <small>Email address:</small>
+          <small>
+            Email address:
+          </small>
           <p>
             <strong>
               <?= $user->email ?>
             </strong>
           </p>
           <hr>
-          <small>Account created:</small>
+          <small>
+            Account created:
+          </small>
           <p>
             <strong>
               <?= $createdAt ?>
