@@ -16,4 +16,5 @@ interface UserStorageInterface
                                    String $password2);
     public function savePassword(String $password);
     public function checkPasswordStrength(String $password);
+    public function deleteAccount();
 }

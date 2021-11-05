@@ -162,10 +162,12 @@
             <button type="button" class="btn btn-secondary" 
                     data-dismiss="modal">
                     Close
-            </button>
-            <a href="/account/delete" type="button" class="btn btn-danger">
-              Delete account
-            </a>
+            </button> 
+            <form method="POST" action="/account/deleteAccount">
+              <button name="submit" class="btn btn-danger">
+                Delete account
+              </a>
+            </form>
           </div>
         </div>
       </div>

@@ -181,4 +181,15 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         $pattern = '/^(?=.*[A-Z])(?=.*[0-9]).{8,}$/';
         return preg_match($pattern, $password);
     }
+
+    public function deleteAccount() 
+    {
+        $sql = 'DELETE FROM user WHERE username = :username';
+        $statement = $this->dbConn->prepare($sql);
+        $statement->bindValue('username', $_SESSION['loggedInUser']);
+        $statement->execute();
+        session_unset();
+        session_destroy();
+        header('Location: /home');
+    }
 }
