@@ -7,7 +7,7 @@ class Photo
 {
     private $id;
     private $user;
-    private $path;
+    private $fileName;
     private $createdAt;
 
     public function getId()
@@ -25,19 +25,19 @@ class Photo
         return $this->user;
     }
 
-    public function setUser(User $user)
+    public function setUser(int $user)
     {
         $this->user = $user;
     }
 
-    public function getPath()
+    public function getFileName()
     {
-        return $this->path;
+        return $this->fileName;
     }
 
-    public function setPath(string $path)
+    public function setFileName(string $fileName)
     {
-        $this->path = $path;
+        $this->fileName = $fileName;
     }
 
     public function getCreatedAt() 

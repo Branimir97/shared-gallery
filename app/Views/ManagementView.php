@@ -87,6 +87,16 @@
           </strong>
       </p>
       <hr>
+      <?php
+         if(isset($_SESSION['uploaded'])) {
+          echo '
+            <p class="bg-success text-white p-2 mb-2">
+              '.$_SESSION['uploaded'].'
+            </p>
+          ';
+        }
+        unset($_SESSION['uploaded']);
+      ?>
       <div class="text-right mb-3">
         <a href="/management/upload" class="btn btn-success">
             Upload new photo

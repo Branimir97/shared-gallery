@@ -4,8 +4,11 @@ namespace Controllers;
 session_start();
 use Models\View;
 use Models\Photo;
+use Models\User;
 use Exceptions\TemplateNotFoundException;
 use Services\UploadHelper;
+use Storage\MySqlDatabaseUserStorage;
+use Storage\MySqlDatabasePhotoStorage;
 
 class ManagementController extends View
 {
@@ -41,8 +44,14 @@ class ManagementController extends View
             if(isset($_POST['submit'])) {
                 $files = $_FILES['files'];
                 $service = new UploadHelper();                
-                $newFileName = $service->uploadPhoto($files);
+                $fileName = $service->uploadPhoto($files);
+                $photo = new Photo();
+                $photo->setFileName($fileName);
+                $userStorage = new MySqlDatabaseUserStorage();
+                $user = $userStorage->findUserFromSession();
+                $photo->setUser($user->id);
                 $photoStorage = new MySqlDatabasePhotoStorage();
+                $photoStorage->save($photo);
             }
         }
     }

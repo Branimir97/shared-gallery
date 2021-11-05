@@ -23,8 +23,8 @@ class UploadHelper
 
         if(count($errors) === 0) {
             $newFileName = 'photo_'.uniqid().'.'.$nameParts[1];
-            move_uploaded_file($tmpLocation, 
-                    '/var/www/shared-gallery/app/Public/Uploads/'.$newFileName);
+            $destination = '/var/www/shared-gallery/app/Public/Uploads/'.$newFileName;
+            move_uploaded_file($tmpLocation, $destination);
             return $newFileName;
         } else {
             $_SESSION['errors'] = $errors;

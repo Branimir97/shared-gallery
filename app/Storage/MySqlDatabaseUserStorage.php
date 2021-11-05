@@ -7,8 +7,8 @@ use Storage\Contracts\UserStorageInterface;
 
 class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
 {
-    private $db_instance;
-    private $db_conn;
+    private $dbInstance;
+    private $dbConn;
 
     public function __construct() 
     {
@@ -122,9 +122,9 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         return $statement->fetch();
     }
 
-    public function changePassword(String $currentPassword, 
-                                   String $newPassword, 
-                                   String $newPasswordRepeat) 
+    public function changePassword(string $currentPassword, 
+                                   string $newPassword, 
+                                   string $newPasswordRepeat) 
     {
         $errors = [];
         $hashPassword = $this->getPassword();
@@ -161,7 +161,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         return $statement->fetchColumn();
     }
 
-    public function checkPasswords($password1, $password2) 
+    public function checkPasswords(string $password1, string $password2) 
     {
         return $password1 === $password2;
     }
@@ -176,7 +176,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         $statement->execute();
     }
 
-    public function checkPasswordStrength($password) 
+    public function checkPasswordStrength(string $password) 
     {
         $pattern = '/^(?=.*[A-Z])(?=.*[0-9]).{8,}$/';
         return preg_match($pattern, $password);

@@ -8,13 +8,13 @@ interface UserStorageInterface
     public function save(User $user);
     public function auth(User $user);
     public function findUserFromSession();
-    public function changePassword(String $currentPassword, 
-                                   String $newPassword, 
-                                   String $newPasswordRepeat);
+    public function changePassword(string $currentPassword, 
+                                   string $newPassword, 
+                                   string $newPasswordRepeat);
     public function getPassword();
-    public function checkPasswords(String $password1, 
-                                   String $password2);
-    public function savePassword(String $password);
-    public function checkPasswordStrength(String $password);
+    public function checkPasswords(string $password1, 
+                                   string $password2);
+    public function savePassword(string $password);
+    public function checkPasswordStrength(string $password);
     public function deleteAccount();
 }
