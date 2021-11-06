@@ -1,6 +1,16 @@
-.photo 
-{
+.photo-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.photo-wrapper img {
     width: 100px;
     height: 100px;
     object-fit: cover;
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
 }

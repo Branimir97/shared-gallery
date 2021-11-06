@@ -104,7 +104,7 @@
           Change password
         </a>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger mt-1" 
+        <button class="btn btn-danger mt-1" 
                 data-toggle="modal" data-target="#modal">
           Delete account
         </button>    

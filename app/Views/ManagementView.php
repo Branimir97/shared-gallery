@@ -106,6 +106,13 @@
             Upload new photo
         </a>
       </div>
+      <?php if(count($photos) === 0):?>
+        <p>
+          <strong>
+            No photos in database.
+          </strong>
+        </p>
+      <?php else:?>
       <div class="table-responsive">
           <table class="table">
               <caption class="text-center">
@@ -130,12 +137,7 @@
                   </tr>
               </thead>
               <tbody>
-                <?php 
-                  if(!isset($photos)):?>
-                  <tr>
-                    No photos in database.
-                  </tr>
-                <?php else:
+                <?php
                   foreach ($photos as $photo): ?>
                     <tr>
                         <td>
@@ -148,18 +150,61 @@
                           <?= $photo->address?>
                         </td>
                         <td>
-                        <a href="../Public/Uploads/<?= $photo->fileName ?>"
-                           target="_blank" title="Open photo in new tab">  
-                          <img class="photo" 
-                               src="../Public/Uploads/<?= $photo->fileName ?>"
-                               alt="photo_<?= $photo->id ?>">
-                        </a>
+                          <div class="photo-wrapper">
+                            <a href="../Public/Uploads/<?= $photo->fileName ?>"
+                              target="_blank" title="Open photo in new tab">  
+                              <img 
+                                  src="../Public/Uploads/<?= $photo->fileName ?>"
+                                  alt="photo_<?= $photo->id ?>">
+                            </a>
+                            <?php if ($photo->username === $_SESSION['loggedInUser']): ?>
+                            <!-- Button trigger modal -->
+                            <a class="btn btn-danger btn-sm close" 
+                                    data-toggle="modal" data-target="#modal">
+                              &times
+                            </a>    
+                            <?php endif;?>
+                          </div>
                         </td>
                     </tr>
-                <?php endforeach; 
-                      endif;?>
+                <?php endforeach; ?>
               </tbody>
           </table>
+          <?php endif;?>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" 
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Delete photo
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" 
+                    aria-label="Close">
+              <span aria-hidden="true">
+                &times;
+              </span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure that you want to delete this photo?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" 
+                    data-dismiss="modal">
+                    Close
+            </button> 
+            <form method="POST" action="/management/deletePhoto">
+              <button name="submit" class="btn btn-danger">
+                Delete photo
+              </a>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
    
