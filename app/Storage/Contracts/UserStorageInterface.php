@@ -17,4 +17,5 @@ interface UserStorageInterface
     public function savePassword(string $password);
     public function checkPasswordStrength(string $password);
     public function deleteAccount();
+    public function findByEmail(string $email);
 }

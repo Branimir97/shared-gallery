@@ -100,16 +100,19 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
             } else {
                 $registered = true;
             }
-        } 
-           
-        if($registered && !password_verify($user->getPassword(), $registeredUser->password)) {
+        }   
+        if($registered && 
+            !password_verify($user->getPassword(), $registeredUser->password)) {
                 $errors[] = 'Wrong password.';
         } 
-    
         if(count($errors) === 0) {
             $_SESSION['loggedIn'] = true;
             $_SESSION['loggedInMessage'] = 'Successfully logged in.';
-            $_SESSION['loggedInUser'] = $user->getUsername();
+            if(is_null($user->getUsername())) {
+                $_SESSION['loggedInUser'] = $this->findByEmail($user->getEmail());
+            } else {
+                $_SESSION['loggedInUser'] = $user->getUsername();
+            }
             header('Location: /home');
         } else {
             $_SESSION['errors'] = $errors;
@@ -171,7 +174,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         return $password1 === $password2;
     }
 
-    public function savePassword($password) 
+    public function savePassword(string $password) 
     {
         $sql = 
             'UPDATE user SET password = :password WHERE username = :username';
@@ -196,5 +199,14 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         session_unset();
         session_destroy();
         header('Location: /home');
+    }
+
+    public function findByEmail(string $email)
+    {
+        $sql = 'SELECT username FROM user WHERE email = :email';
+        $statement= $this->dbConn->prepare($sql);
+        $statement->bindValue('email', $email);
+        $statement->execute();
+        return $statement->fetchColumn();
     }
 }
