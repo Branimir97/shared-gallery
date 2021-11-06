@@ -18,7 +18,11 @@ class ManagementController extends View
             header('Location: /home');
         } else {
             try {
-                echo parent::render('Management');
+                $photoStorage = new MySqlDatabasePhotoStorage();
+                $photos = $photoStorage->findAll();
+                echo parent::render('Management', [
+                    'photos' => $photos
+                ]);
             } catch(TemplateNotFoundException $e) {
                 echo $e->getMessage();
             }

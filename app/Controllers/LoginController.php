@@ -33,8 +33,8 @@ class LoginController extends View
                     $user->setUsername($_POST['username']);
                 }
                 $user->setPassword($_POST['password']);
-                $storage = new MySqlDatabaseUserStorage();
-                $storage->auth($user);
+                $userStorage = new MySqlDatabaseUserStorage();
+                $userStorage->auth($user);
             }
         }
     }

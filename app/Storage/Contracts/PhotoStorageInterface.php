@@ -6,4 +6,5 @@ use Models\Photo;
 interface PhotoStorageInterface
 {
     public function save(Photo $photo);
+    public function findAll();
 }

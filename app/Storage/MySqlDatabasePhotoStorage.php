@@ -29,4 +29,13 @@ class MySqlDatabasePhotoStorage extends Database implements PhotoStorageInterfac
         $_SESSION['uploaded'] = 'Photo successfully uploaded & saved.';
         header('Location: /management');
     }
+
+    public function findAll()
+    {
+        $sql = "SELECT * FROM photo";
+        $statement = $this->dbConn->prepare($sql);
+        $statement->setFetchMode(PDO::FETCH_OBJ);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
 }
