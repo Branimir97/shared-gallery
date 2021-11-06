@@ -9,7 +9,7 @@
     object-fit: cover;
 }
 
-.close {
+.delete {
     position: absolute;
     right: 0;
     cursor: pointer;

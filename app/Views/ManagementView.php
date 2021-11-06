@@ -159,7 +159,7 @@
                             </a>
                             <?php if ($photo->username === $_SESSION['loggedInUser']): ?>
                             <!-- Button trigger modal -->
-                            <a class="btn btn-danger btn-sm close" 
+                            <a href="/management/delete" class="btn btn-danger btn-sm delete" 
                                     data-toggle="modal" data-target="#modal">
                               &times
                             </a>    
@@ -182,6 +182,7 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">
               Delete photo
+              <i class="fas fa-camera-retro"></i>
             </h5>
             <button type="button" class="close" data-dismiss="modal" 
                     aria-label="Close">
@@ -198,7 +199,7 @@
                     data-dismiss="modal">
                     Close
             </button> 
-            <form method="POST" action="/management/deletePhoto">
+            <form method="POST" action="/account/deleteAccount">
               <button name="submit" class="btn btn-danger">
                 Delete photo
               </a>
@@ -207,6 +208,7 @@
         </div>
       </div>
     </div>
+
    
      <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
