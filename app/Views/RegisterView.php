@@ -89,6 +89,13 @@
                 placeholder="e.g. branimir@gmail.com" required>
         </div>
         <div class="form-group">
+          <label for="address">
+            Address
+          </label>
+          <input type="text" class="form-control" id="address" name="address"
+                placeholder="e.g. Novska" required>
+        </div>
+        <div class="form-group">
           <label for="password">
             Password
           </label>

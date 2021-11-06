@@ -7,6 +7,7 @@ class User
     private $id;
     private $username;
     private $email;
+    private $address;
     private $password;
     private $repeatedPassword;
     private $createdAt;
@@ -39,6 +40,16 @@ class User
     public function setEmail(string $email)
     {
         $this->email = $email;
+    }
+
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address)
+    {
+        $this->address = $address;
     }
 
     public function getPassword()

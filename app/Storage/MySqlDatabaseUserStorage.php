@@ -50,13 +50,15 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
 
         if(count($errors) === 0) {
             $sql = 
-                "INSERT INTO user(username, email, password, created_at)
-                VALUES (:username, :email, :password, :created_at)";
+                "INSERT INTO user(username, email, address, password, created_at)
+                VALUES (:username, :email, :address, :password, :created_at)";
             $statement = $this->dbConn->prepare($sql);
             $statement->bindValue(':username', 
                         filter_var($user->getUsername(), FILTER_SANITIZE_STRING));
             $statement->bindValue(':email', 
                         filter_var($user->getEmail(), FILTER_SANITIZE_EMAIL));
+            $statement->bindValue(':address', 
+                        filter_var($user->getAddress(), FILTER_SANITIZE_STRING));
             $statement->bindValue(':password', 
                         password_hash($user->getPassword(), PASSWORD_DEFAULT));
             $statement->bindValue(':created_at', 
@@ -80,27 +82,30 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         $statement->execute();
 
         $registeredUsers = $statement->fetchAll();
-        $registered = true;
+        $registered = false;
         foreach($registeredUsers as $registeredUser) {
-            if(!is_null($user->getUsername())) {
-                if($registeredUser->username !== $user->getUsername()) {
-                    $errors[] = 'User with this username does not exist.';
-                    $registered = false;
-                }
-            } 
-            else if(!is_null($user->getEmail())) {
-                if($registeredUser->email !== $user->getEmail()) {
-                    $errors[] = 'User with this email does not exist.';
-                    $registered = false;
-                }
-            } 
-            if(!$registered) {
-                break;
-            }
-            if(!password_verify($user->getPassword(), $registeredUser->password)) {
-                    $errors[] = 'Wrong password.';
-            } 
+            $usernames[] = $registeredUser->username;
+            $emails[] = $registeredUser->email;
         }
+        if(!is_null($user->getUsername())) {
+            if(!in_array($user->getUsername(), $usernames)) {
+                $errors[] = 'User with this username does not exist.';
+            } else {
+                $registered = true;
+            }
+        } 
+        else if(!is_null($user->getEmail())) {
+            if(!in_array($user->getEmail(), $emails)) {
+                $errors[] = 'User with this email does not exist.';
+            } else {
+                $registered = true;
+            }
+        } 
+           
+        if($registered && !password_verify($user->getPassword(), $registeredUser->password)) {
+                $errors[] = 'Wrong password.';
+        } 
+    
         if(count($errors) === 0) {
             $_SESSION['loggedIn'] = true;
             $_SESSION['loggedInMessage'] = 'Successfully logged in.';
