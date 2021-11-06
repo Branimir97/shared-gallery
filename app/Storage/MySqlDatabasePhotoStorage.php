@@ -26,15 +26,17 @@ class MySqlDatabasePhotoStorage extends Database implements PhotoStorageInterfac
         $statement->bindValue(':created_at', 
                     $photo->getCreatedAt()->format('Y-m-d H:i:s'));
         $statement->execute();
-        $_SESSION['uploaded'] = 'Photo successfully uploaded & saved.';
+        $_SESSION['uploaded'] = 'Photo(s) successfully uploaded & saved.';
         header('Location: /management');
     }
 
     public function findAll()
     {
-        $sql = "SELECT * FROM photo";
+        $sql = "SELECT * FROM photo 
+                JOIN user ON user.id = photo.user_id 
+                ORDER BY photo.id DESC";
         $statement = $this->dbConn->prepare($sql);
-        $statement->setFetchMode(PDO::FETCH_OBJ);
+        $statement->setFetchMode(\PDO::FETCH_OBJ);
         $statement->execute();
         return $statement->fetchAll();
     }

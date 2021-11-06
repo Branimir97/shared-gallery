@@ -114,7 +114,7 @@
               Select file
             </label>
             <input type="file" class="form-control" id="file" 
-                name="files" multiple required>
+                name="files[]" multiple required>
             <small>
               Allowed extensions: [.jpg, .png]
             </small>

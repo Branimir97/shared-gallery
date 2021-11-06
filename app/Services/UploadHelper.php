@@ -49,4 +49,15 @@ class UploadHelper
 
         return $phpFileUploadErrors[$error];
     }
+
+    public function reArrayFiles($formFiles)
+    {
+        $files = [];
+        for($i=0;$i<count($formFiles['name']);$i++) {
+            foreach(array_keys($formFiles) as $key) {
+                $files[$i][$key] = $formFiles[$key][$i];
+            }
+        }
+        return $files;
+    }
 }

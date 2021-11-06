@@ -19,6 +19,10 @@
     <!-- Icon -->
     <link rel="icon" href="../Public/Icons/logo.png">
     
+    <style>
+          <?php include "css/management.css"?>
+    </style>
+
     <title>
       Management
     </title>
@@ -104,8 +108,10 @@
       </div>
       <div class="table-responsive">
           <table class="table">
-              <caption>
-                  Photos list
+              <caption class="text-center">
+                  <small>
+                    Photos list
+                  </small>
               </caption>
               <thead>
                   <tr>
@@ -124,20 +130,34 @@
                   </tr>
               </thead>
               <tbody>
+                <?php 
+                  if(!isset($photos)):?>
                   <tr>
-                      <td>
-
-                      </td>
-                      <td>
-
-                      </td>
-                      <td>
-
-                      </td>
-                      <td>
-                        
-                      </td>
+                    No photos in database.
                   </tr>
+                <?php else:
+                  foreach ($photos as $photo): ?>
+                    <tr>
+                        <td>
+                          <?= $photo->username?>
+                        </td>
+                        <td>
+                          <?= $photo->email?>
+                        </td>
+                        <td>
+                          <?= $photo->address?>
+                        </td>
+                        <td>
+                        <a href="../Public/Uploads/<?= $photo->fileName ?>"
+                           target="_blank" title="Open photo in new tab">  
+                          <img class="photo" 
+                               src="../Public/Uploads/<?= $photo->fileName ?>"
+                               alt="photo_<?= $photo->id ?>">
+                        </a>
+                        </td>
+                    </tr>
+                <?php endforeach; 
+                      endif;?>
               </tbody>
           </table>
       </div>

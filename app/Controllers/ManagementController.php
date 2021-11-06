@@ -46,16 +46,19 @@ class ManagementController extends View
     {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['submit'])) {
-                $files = $_FILES['files'];
-                $service = new UploadHelper();                
-                $fileName = $service->uploadPhoto($files);
-                $photo = new Photo();
-                $photo->setFileName($fileName);
-                $userStorage = new MySqlDatabaseUserStorage();
-                $user = $userStorage->findUserFromSession();
-                $photo->setUser($user->id);
-                $photoStorage = new MySqlDatabasePhotoStorage();
-                $photoStorage->save($photo);
+                $formFiles = $_FILES['files'];
+                $service = new UploadHelper(); 
+                $files = $service->reArrayFiles($formFiles);
+                foreach($files as $file) {
+                    $fileName = $service->uploadPhoto($file);
+                    $photo = new Photo();
+                    $photo->setFileName($fileName);
+                    $userStorage = new MySqlDatabaseUserStorage();
+                    $user = $userStorage->findUserFromSession();
+                    $photo->setUser($user->id);
+                    $photoStorage = new MySqlDatabasePhotoStorage();
+                    $photoStorage->save($photo);    
+                }    
             }
         }
     }
