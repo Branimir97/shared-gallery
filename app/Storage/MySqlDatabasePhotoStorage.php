@@ -33,11 +33,34 @@ class MySqlDatabasePhotoStorage extends Database implements PhotoStorageInterfac
     public function findAll()
     {
         $sql = "SELECT * FROM photo 
-                JOIN user ON user.id = photo.user_id 
+                INNER JOIN user ON photo.user_id = user.id     
                 ORDER BY photo.id DESC";
         $statement = $this->dbConn->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_OBJ);
         $statement->execute();
+        var_dump($statement->fetchAll());
         return $statement->fetchAll();
+    }
+
+    public function delete(int $id)
+    {
+        $photo = $this->findById($id);
+        unlink('/var/www/shared-gallery/app/Public/Uploads/'.$photo->fileName);
+        $sql = "DELETE FROM photo WHERE id = :id";
+        $statement = $this->dbConn->prepare($sql);
+        $statement->bindValue('id', $id);
+        $statement->execute();
+        $_SESSION['deletedPhoto'] = 'Photo successfully deleted.';
+        header('Location: /management');
+    }
+
+    public function findById(int $id)
+    {
+        $sql = "SELECT * FROM photo WHERE id = :id";
+        $statement = $this->dbConn->prepare($sql);
+        $statement->bindValue('id', $id);
+        $statement->setFetchMode(\PDO::FETCH_OBJ);
+        $statement->execute();
+        return $statement->fetch();
     }
 }

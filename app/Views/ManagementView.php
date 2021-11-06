@@ -98,8 +98,16 @@
               '.$_SESSION['uploaded'].'
             </p>
           ';
-        }
+          }
+          if(isset($_SESSION['deletedPhoto'])) {
+            echo '
+              <p class="bg-danger text-white p-2 mb-2">
+                '.$_SESSION['deletedPhoto'].'
+              </p>
+            ';
+          }
         unset($_SESSION['uploaded']);
+        unset($_SESSION['deletedPhoto']);
       ?>
       <div class="text-right mb-3">
         <a href="/management/upload" class="btn btn-success">
@@ -162,7 +170,42 @@
                             <a href="/management/delete" class="btn btn-danger btn-sm delete" 
                                     data-toggle="modal" data-target="#modal">
                               &times
-                            </a>    
+                            </a>
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal" tabindex="-1" role="dialog" 
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                      Delete photo
+                                      <i class="fas fa-camera-retro"></i>
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" 
+                                            aria-label="Close">
+                                      <span aria-hidden="true">
+                                        &times;
+                                      </span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Are you sure that you want to delete this photo?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" 
+                                            data-dismiss="modal">
+                                            Close
+                                    </button> 
+                                    <form method="POST" action="/management/deletePhoto">
+                                      <input type="hidden" name="photo" value="<?= $photo->id ?>">
+                                      <button name="submit" class="btn btn-danger">
+                                        Delete photo
+                                      </a>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>    
                             <?php endif;?>
                           </div>
                         </td>
@@ -173,44 +216,8 @@
           <?php endif;?>
       </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" 
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-              Delete photo
-              <i class="fas fa-camera-retro"></i>
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" 
-                    aria-label="Close">
-              <span aria-hidden="true">
-                &times;
-              </span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Are you sure that you want to delete this photo?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" 
-                    data-dismiss="modal">
-                    Close
-            </button> 
-            <form method="POST" action="/account/deleteAccount">
-              <button name="submit" class="btn btn-danger">
-                Delete photo
-              </a>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
    
-     <!-- Optional JavaScript -->
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 

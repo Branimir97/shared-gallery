@@ -7,4 +7,6 @@ interface PhotoStorageInterface
 {
     public function save(Photo $photo);
     public function findAll();
+    public function delete(int $id);
+    public function findById(int $id);
 }

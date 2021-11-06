@@ -63,12 +63,12 @@ class ManagementController extends View
         }
     }
 
-    public function deleteAction()
+    public function deletePhotoAction()
     {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['submit'])) {
                 $photoStorage = new MySqlDatabasePhotoStorage();
-                $photoStorage->delete($id);
+                $photoStorage->delete($_POST['photo']);
             }
         }
     }
