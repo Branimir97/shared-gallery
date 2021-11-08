@@ -100,7 +100,7 @@
             Password
           </label>
           <input type="password" class="form-control" id="password" name="password"
-                placeholder="e.g. 123!aA!123" required>
+                placeholder="e.g. 123A4123" required>
           <small>
             Password must contain min. 8 characters, 1 uppercase letter & 1 number.
           </small>
@@ -110,7 +110,7 @@
             Repeat password
           </label>
           <input type="password" class="form-control" id="repeatPassword" name="repeatPassword"
-                placeholder="e.g. 123ab123" required>
+                placeholder="e.g. 123A4123" required>
           <small>
             Passwords must match.
           </small>

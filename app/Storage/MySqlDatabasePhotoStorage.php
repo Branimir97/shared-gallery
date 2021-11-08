@@ -65,10 +65,10 @@ class MySqlDatabasePhotoStorage extends Database implements PhotoStorageInterfac
     }
 
     public function count()
-    {
+    {     
         $sql = "SELECT COUNT(id) FROM photo";
         $statement = $this->dbConn->prepare($sql);
         $statement->execute();
-        return $statement->fetchColumn();
+        return $statement->fetchColumn(); 
     }
 }

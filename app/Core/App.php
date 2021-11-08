@@ -8,6 +8,7 @@ class App
    public function __construct() 
    {
        $this->router = new Router;
+       $this->database = Database::getInstance();
    }
 
    public function run() 
