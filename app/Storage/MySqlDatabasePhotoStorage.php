@@ -18,15 +18,15 @@ class MySqlDatabasePhotoStorage extends Database implements PhotoStorageInterfac
 
     public function save(Photo $photo)
     {
-        $sql = 'INSERT INTO photo(fileName, user_id, created_at) 
-                VALUES(:fileName, :user_id, :created_at)';
+        $sql = "INSERT INTO photo(fileName, user_id, created_at) 
+                VALUES(:fileName, :user_id, :created_at)";
         $statement = $this->dbConn->prepare($sql);
         $statement->bindValue(':fileName', $photo->getFileName());
         $statement->bindValue(':user_id', $photo->getUser());
         $statement->bindValue(':created_at', 
                     $photo->getCreatedAt()->format('Y-m-d H:i:s'));
         $statement->execute();
-        $_SESSION['uploaded'] = 'Photo(s) successfully uploaded & saved.';
+        $_SESSION['uploaded'] = "Photo(s) successfully uploaded & saved.";
         header('Location: /management');
     }
 

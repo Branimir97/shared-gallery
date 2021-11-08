@@ -27,9 +27,9 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
             $errors[] = "Passwords do not match.";
         }
 
-        $query = 
+        $sql = 
             "SELECT username, email FROM user";
-        $statement = $this->dbConn->prepare($query);
+        $statement = $this->dbConn->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_OBJ);
         $statement->execute();
         $registeredUsers = $statement->fetchAll();
@@ -75,8 +75,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
     public function auth(User $user) 
     {
         $errors = [];
-        $sql= 
-            'SELECT * FROM user';
+        $sql= "SELECT * FROM user";
         $statement = $this->dbConn->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_OBJ);
         $statement->execute();
@@ -91,21 +90,21 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         }
         if(!is_null($user->getUsername())) {
             if(empty($usernames) || !in_array($user->getUsername(), $usernames)) {
-                $errors[] = 'User with this username does not exist.';
+                $errors[] = "User with this username does not exist.";
             } else {
                 $registered = true;
             }
         } 
         else if(!is_null($user->getEmail())) {
             if(empty($emails) || !in_array($user->getEmail(), $emails)) {
-                $errors[] = 'User with this email does not exist.';
+                $errors[] = "User with this email does not exist.";
             } else {
                 $registered = true;
             }
         }   
         if($registered && 
             !password_verify($user->getPassword(), $registeredUser->password)) {
-                $errors[] = 'Wrong password.';
+                $errors[] = "Wrong password.";
         } 
         if(count($errors) === 0) {
             $_SESSION['loggedIn'] = true;
@@ -153,7 +152,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         }
         if(count($errors) === 0) {
             header('Location: /account');
-            $_SESSION['changedPassword'] = 'Password successfully changed.';
+            $_SESSION['changedPassword'] = "Password successfully changed.";
         } else {
             $_SESSION['errors'] = $errors;
             header('Location: /account/password');
@@ -179,7 +178,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
     public function savePassword(string $password) 
     {
         $sql = 
-            'UPDATE user SET password = :password WHERE username = :username';
+            "UPDATE user SET password = :password WHERE username = :username";
         $statement = $this->dbConn->prepare($sql);
         $statement->bindValue(':username', $_SESSION['loggedInUser']);
         $statement->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
@@ -195,7 +194,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
     public function deleteAccount() 
     {
         $this->deleteUserPhotos();
-        $sql = 'DELETE FROM user WHERE username = :username';
+        $sql = "DELETE FROM user WHERE username = :username";
         $statement = $this->dbConn->prepare($sql);
         $statement->bindValue('username', $_SESSION['loggedInUser']);
         $statement->execute();
@@ -206,7 +205,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
 
     public function findByEmail(string $email)
     {
-        $sql = 'SELECT username FROM user WHERE email = :email';
+        $sql = "SELECT username FROM user WHERE email = :email";
         $statement= $this->dbConn->prepare($sql);
         $statement->bindValue('email', $email);
         $statement->execute();
@@ -215,7 +214,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
 
     public function getIdFromUsername()
     {
-        $sql = 'SELECT id FROM user WHERE username = :username';
+        $sql = "SELECT id FROM user WHERE username = :username";
         $statement= $this->dbConn->prepare($sql);
         $statement->bindValue('username', $_SESSION['loggedInUser']);
         $statement->execute();
