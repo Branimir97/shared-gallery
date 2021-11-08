@@ -82,20 +82,22 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         $statement->execute();
 
         $registeredUsers = $statement->fetchAll();
+        var_dump($registeredUsers);
+    
         $registered = false;
         foreach($registeredUsers as $registeredUser) {
             $usernames[] = $registeredUser->username;
             $emails[] = $registeredUser->email;
         }
         if(!is_null($user->getUsername())) {
-            if(!in_array($user->getUsername(), $usernames)) {
+            if(empty($usernames) || !in_array($user->getUsername(), $usernames)) {
                 $errors[] = 'User with this username does not exist.';
             } else {
                 $registered = true;
             }
         } 
         else if(!is_null($user->getEmail())) {
-            if(!in_array($user->getEmail(), $emails)) {
+            if(empty($emails) || !in_array($user->getEmail(), $emails)) {
                 $errors[] = 'User with this email does not exist.';
             } else {
                 $registered = true;
