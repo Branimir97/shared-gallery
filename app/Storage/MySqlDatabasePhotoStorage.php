@@ -38,7 +38,6 @@ class MySqlDatabasePhotoStorage extends Database implements PhotoStorageInterfac
         $statement = $this->dbConn->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_OBJ);
         $statement->execute();
-        var_dump($statement->fetchAll());
         return $statement->fetchAll();
     }
 
@@ -70,5 +69,15 @@ class MySqlDatabasePhotoStorage extends Database implements PhotoStorageInterfac
         $statement = $this->dbConn->prepare($sql);
         $statement->execute();
         return $statement->fetchColumn(); 
+    }
+
+    public function findByUserId(int $id)
+    {
+        $sql = "SELECT fileName FROM photo WHERE user_id = :id";
+        $statement = $this->dbConn->prepare($sql);
+        $statement->bindValue('id', $id);
+        $statement->setFetchMode(\PDO::FETCH_OBJ);
+        $statement->execute();
+        return $statement->fetchAll();
     }
 }

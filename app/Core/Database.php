@@ -66,9 +66,9 @@ class Database
     "CREATE TABLE IF NOT EXISTS photo(
         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         user_id INT NOT NULL,
-        filename VARCHAR(255) NOT NULL,
+        fileName VARCHAR(255) NOT NULL,
         created_at DATETIME NOT NULL,
-        CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES user(id)
+        CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE
     )";
     $this->dbConn->exec($sql);
    }

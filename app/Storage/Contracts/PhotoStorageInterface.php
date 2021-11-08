@@ -10,4 +10,5 @@ interface PhotoStorageInterface
     public function delete(int $id);
     public function findById(int $id);
     public function count();
+    public function findByUserId(int $id);
 }

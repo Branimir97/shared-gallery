@@ -18,4 +18,6 @@ interface UserStorageInterface
     public function checkPasswordStrength(string $password);
     public function deleteAccount();
     public function findByEmail(string $email);
+    public function getIdFromUsername();
+    public function deleteUserPhotos();
 }

@@ -194,6 +194,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
 
     public function deleteAccount() 
     {
+        $this->deleteUserPhotos();
         $sql = 'DELETE FROM user WHERE username = :username';
         $statement = $this->dbConn->prepare($sql);
         $statement->bindValue('username', $_SESSION['loggedInUser']);
@@ -210,5 +211,23 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         $statement->bindValue('email', $email);
         $statement->execute();
         return $statement->fetchColumn();
+    }
+
+    public function getIdFromUsername()
+    {
+        $sql = 'SELECT id FROM user WHERE username = :username';
+        $statement= $this->dbConn->prepare($sql);
+        $statement->bindValue('username', $_SESSION['loggedInUser']);
+        $statement->execute();
+        return $statement->fetchColumn();
+    }
+
+    public function deleteUserPhotos()
+    {
+        $photoStorage = new MySqlDatabasePhotoStorage();
+        $userPhotos = $photoStorage->findByUserId($this->getIdFromUsername());
+        foreach($userPhotos as $userPhoto) {
+            unlink('/var/www/shared-gallery/app/Public/Uploads/'.$userPhoto->fileName);
+        }
     }
 }
