@@ -37,13 +37,13 @@ class Database
    }
 
    public function constructDatabase()
-   {
-    $sql = "CREATE DATABASE IF NOT EXISTS shared_gallery;";
-    $this->dbConn->exec($sql);
-    $sql = "USE shared_gallery";
-    $this->dbConn->exec($sql);
-    $this->createUserTable();
-    $this->createPhotoTable();
+    {
+        $sql = "CREATE DATABASE IF NOT EXISTS shared_gallery;";
+        $this->dbConn->exec($sql);
+        $sql = "USE shared_gallery";
+        $this->dbConn->exec($sql);
+        $this->createUserTable();
+        $this->createPhotoTable();
    }
 
    public function createUserTable()

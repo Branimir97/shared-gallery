@@ -46,7 +46,6 @@ class UploadHelper
             7 => 'Failed to write file to disk.',
             8 => 'A PHP extension stopped the file upload.',
         );
-
         return $phpFileUploadErrors[$error];
     }
 
