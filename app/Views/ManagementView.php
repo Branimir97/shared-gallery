@@ -16,12 +16,13 @@
         crossorigin="anonymous">
     </script>
 
-    <!-- Icon -->
-    <link rel="icon" href="../Public/Icons/logo.png">
-    
+    <!-- CSS -->
     <style>
           <?php include "css/management.css"?>
     </style>
+
+    <!-- Icon -->
+    <link rel="icon" href="../Public/Icons/logo.png">
 
     <title>
       Management

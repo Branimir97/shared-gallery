@@ -14,6 +14,7 @@
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/6aa1bd9ffa.js" crossorigin="anonymous"></script>
 
+    <!-- CSS -->
     <style>
           <?php include "css/container.css"?>
     </style>
