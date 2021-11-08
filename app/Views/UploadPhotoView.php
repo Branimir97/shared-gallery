@@ -23,7 +23,7 @@
     <link rel="icon" href="../Public/Icons/logo.png">
 
     <title>
-      Upload photo
+      Upload photo(s)
     </title>
   </head>
   <body>
@@ -121,7 +121,7 @@
             </small>
           </div>
           <button type="submit" name="submit" class="btn btn-outline-primary">
-            Upload photo
+            Upload photo(s)
           </button>
         </form>
       </div>

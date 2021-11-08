@@ -112,7 +112,7 @@
       ?>
       <div class="text-right mb-3">
         <a href="/management/upload" class="btn btn-success">
-            Upload new photo
+            Upload new photo(s)
         </a>
       </div>
       <?php if(count($photos) === 0):?>

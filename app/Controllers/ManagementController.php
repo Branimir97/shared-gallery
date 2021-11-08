@@ -72,4 +72,11 @@ class ManagementController extends View
             }
         }
     }
+
+    public function countPhotosAction()
+    {
+        $photoStorage = new MySqlDatabasePhotoStorage();
+        $photosCount = $photoStorage->count();
+        echo $photosCount;
+    }
 }
