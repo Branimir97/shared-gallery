@@ -33,6 +33,12 @@ class LoginController extends View
                     $user->setUsername($_POST['username']);
                 }
                 $user->setPassword($_POST['password']);
+               
+                if (isset($_POST['rememberMe'])){
+                    setcookie('username', $_POST['username'], time() + 60*60);
+                } else {
+                    setcookie('username', "", time() - 1);
+                }
                 $userStorage = new MySqlDatabaseUserStorage();
                 $userStorage->auth($user);
             }
