@@ -46,7 +46,7 @@
           </a>
           <?php 
             if(isset($_SESSION['loggedIn'])): ?>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" 
                 id="navbarDropdownMenuLink" data-toggle="dropdown" 
                 aria-haspopup="true" aria-expanded="false">
@@ -58,7 +58,7 @@
                   Management
                   <i class="fas fa-images"></i>
                 </a>
-                <a class="dropdown-item" href="/account">
+                <a class="dropdown-item active" href="/account">
                   My account
                   <i class="fas fa-user-circle"></i>
                 </a>

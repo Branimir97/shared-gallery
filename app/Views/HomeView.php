@@ -35,7 +35,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" href="/home">
+          <a class="nav-item nav-link active" href="/home">
             Home
             <i class="fas fa-house-damage"></i>
           </a>

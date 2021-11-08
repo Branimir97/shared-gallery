@@ -44,7 +44,7 @@
             Home
             <i class="fas fa-house-damage"></i>
           </a>
-          <a class="nav-item nav-link" href="/login">
+          <a class="nav-item nav-link active" href="/login">
             Login
             <i class="fas fa-sign-in-alt"></i>
           </a>

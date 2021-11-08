@@ -48,7 +48,7 @@
             Login
             <i class="fas fa-sign-in-alt"></i>
           </a>
-          <a class="nav-item nav-link" href="/register">
+          <a class="nav-item nav-link active" href="/register">
             Register
             <i class="fas fa-user-plus"></i>
           </a>
