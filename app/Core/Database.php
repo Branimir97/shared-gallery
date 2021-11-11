@@ -52,8 +52,8 @@ class Database
     $sql = 
     "CREATE TABLE IF NOT EXISTS user(
         id INT AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(255) NOT NULL,
-        email VARCHAR(255) NOT NULL,
+        username VARCHAR(255) NOT NULL UNIQUE,
+        email VARCHAR(255) NOT NULL UNIQUE,
         address VARCHAR(255) NOT NULL,
         password VARCHAR(255) NOT NULL,
         created_at DATETIME NOT NULL
@@ -67,7 +67,7 @@ class Database
     "CREATE TABLE IF NOT EXISTS photo(
         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         user_id INT NOT NULL,
-        fileName VARCHAR(255) NOT NULL,
+        fileName VARCHAR(255) NOT NULL UNIQUE,
         created_at DATETIME NOT NULL,
         CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE
     )";

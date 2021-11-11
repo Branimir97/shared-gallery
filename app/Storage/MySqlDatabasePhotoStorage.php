@@ -32,8 +32,17 @@ class MySqlDatabasePhotoStorage extends Database implements PhotoStorageInterfac
 
     public function findAll()
     {
-        $sql = "SELECT * FROM photo 
-                INNER JOIN user ON photo.user_id = user.id     
+        $sql = "SELECT photo.id as photo_id, 
+                       photo.fileName,
+                       photo.created_at,
+                       user.id as user_id,
+                       user.username, 
+                       user.email,
+                       user.address,
+                       user.created_at
+                       FROM photo
+                INNER JOIN user
+                ON photo.user_id = user.id 
                 ORDER BY photo.id DESC";
         $statement = $this->dbConn->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_OBJ);

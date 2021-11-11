@@ -164,7 +164,7 @@
                               target="_blank" title="Open photo in new tab">  
                               <img 
                                   src="../Public/Uploads/<?= $photo->fileName ?>"
-                                  alt="photo_<?= $photo->id ?>">
+                                  alt="photo_<?= $photo->photo_id ?>">
                             </a>
                             <?php if ($photo->username === $_SESSION['loggedInUser']): ?>
                             <!-- Button trigger modal -->
@@ -198,7 +198,7 @@
                                             Close
                                     </button> 
                                     <form method="POST" action="/management/deletePhoto">
-                                      <input type="hidden" name="photo" value="<?= $photo->id ?>">
+                                      <input type="hidden" name="photo" value="<?= $photo->photo_id ?>">
                                       <button name="submit" class="btn btn-danger">
                                         Delete photo
                                       </a>
