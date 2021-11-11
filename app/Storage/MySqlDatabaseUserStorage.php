@@ -79,9 +79,7 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         $statement = $this->dbConn->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_OBJ);
         $statement->execute();
-
         $registeredUsers = $statement->fetchAll();
-        var_dump($registeredUsers);
     
         $registered = false;
         foreach($registeredUsers as $registeredUser) {
@@ -198,8 +196,9 @@ class MySqlDatabaseUserStorage extends Database implements UserStorageInterface
         $statement = $this->dbConn->prepare($sql);
         $statement->bindValue('username', $_SESSION['loggedInUser']);
         $statement->execute();
+        setcookie('username', "", time() - 1, '/');
         session_unset();
-        session_destroy();
+        session_destroy();  
         header('Location: /home');
     }
 

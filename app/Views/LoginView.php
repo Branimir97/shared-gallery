@@ -86,7 +86,11 @@
             Username/Email
           </label>
           <input type="text" class="form-control" id="username" name="username"
-                placeholder="Your username or email" required>
+                placeholder="Your username or email" required
+                <?php if(isset($_COOKIE['username'])):?>
+                  value="<?= $_COOKIE['username'] ?>"
+                <?php endif; ?> 
+                >
         </div>
         <div class="form-group">
           <label for="password">
@@ -96,7 +100,11 @@
                 placeholder="Your password" required>
         </div>
         <div class="form-check mt-2">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" name="rememberMe">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" name="rememberMe"
+          <?php if(isset($_COOKIE['username'])):?>
+                  checked
+                <?php endif; ?> 
+          >
           <label class="form-check-label" for="exampleCheck1">
             Remember me
           </label>
