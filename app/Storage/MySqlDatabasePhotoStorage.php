@@ -38,6 +38,7 @@ class MySqlDatabasePhotoStorage extends Database implements PhotoStorageInterfac
         $statement = $this->dbConn->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_OBJ);
         $statement->execute();
+        //var_dump($statement->fetchAll());
         return $statement->fetchAll();
     }
 

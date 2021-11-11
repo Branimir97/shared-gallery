@@ -1,5 +1,4 @@
 <?php
-
 namespace Controllers;
 session_start();
 use Models\View;
@@ -18,7 +17,7 @@ class LoginController extends View
                 echo parent::render('Login');
             } catch(TemplateNotFoundException $e) {
                 echo $e->getMessage();
-            }
+            }   
         }
     }
 
@@ -34,13 +33,11 @@ class LoginController extends View
                 }
                 $user->setPassword($_POST['password']);
                
-                if (isset($_POST['rememberMe'])){
-                    setcookie('username', $_POST['username'], time() + 60*60);
-                } else {
-                    setcookie('username', "", time() - 1);
-                }
                 $userStorage = new MySqlDatabaseUserStorage();
                 $userStorage->auth($user);
+                if (isset($_POST['rememberMe'])){
+                    setcookie('username', $_POST['username'], time() + (60*60), '/');
+                }   
             }
         }
     }

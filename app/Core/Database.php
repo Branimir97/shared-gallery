@@ -15,6 +15,7 @@ class Database
         $this->dbConn = new PDO(
             DB_DSN, DB_USER, DB_PASSWORD
         );
+        $this->dbConn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $this->dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->constructDatabase();
 

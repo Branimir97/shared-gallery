@@ -9,6 +9,11 @@ class HomeController extends View
 {
     public function indexAction() 
     {
+        if(isset($_COOKIE['username']))
+        {
+            $_SESSION['loggedIn'] = true;
+            $_SESSION['loggedInUser'] = $_COOKIE['username'];
+        }
         try{
             echo parent::render('Home');
         } catch(TemplateNotFoundException $e) {
