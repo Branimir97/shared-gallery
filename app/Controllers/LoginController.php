@@ -1,6 +1,5 @@
 <?php
 namespace Controllers;
-session_start();
 use Models\View;
 use Models\User;
 use Storage\MySqlDatabaseUserStorage;
