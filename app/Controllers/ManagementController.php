@@ -1,7 +1,6 @@
 <?php
 
 namespace Controllers;
-session_start();
 use Models\View;
 use Models\Photo;
 use Models\User;
