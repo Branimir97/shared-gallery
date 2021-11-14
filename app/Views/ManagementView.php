@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-    
+    <?php include 'base/libraries.php'; ?>
+
     <!-- CSS -->
     <style>
-          <?php include "css/management.css"?>
+          <?php include 'css/management.css'; ?>
     </style>
 
     <title>
@@ -12,13 +13,13 @@
     </title>
   </head>
   <body>
-        
+    <?php include 'base/navbar.php'; ?>    
     <div class="container text-center mt-2">
       <p>
-          You're logged in as 
-          <strong>
-              <?php echo $_SESSION['loggedInUser']; ?>
-          </strong>
+        You're logged in as 
+        <strong>
+            <?php echo $_SESSION['loggedInUser']; ?>
+        </strong>
       </p>
       <hr>
       <?php
@@ -28,6 +29,7 @@
               '.$_SESSION['uploaded'].'
             </p>
           ';
+          unset($_SESSION['uploaded']);
           }
           if(isset($_SESSION['deletedPhoto'])) {
             echo '
@@ -35,13 +37,12 @@
                 '.$_SESSION['deletedPhoto'].'
               </p>
             ';
+            unset($_SESSION['deletedPhoto']);
           }
-        unset($_SESSION['uploaded']);
-        unset($_SESSION['deletedPhoto']);
       ?>
       <div class="text-right mb-3">
         <a href="/management/upload" class="btn btn-success">
-            Upload new photo(s)
+          Upload new photo(s)
         </a>
       </div>
       <?php if(count($photos) === 0):?>

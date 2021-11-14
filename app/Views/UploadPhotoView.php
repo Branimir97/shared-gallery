@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    
+    <?php include 'base/libraries.php'; ?>
+
     <!-- CSS -->
     <style>
           <?php include "css/container.css"?>
@@ -12,7 +13,7 @@
     </title>
   </head>
   <body>
-        
+    <?php include 'base/navbar.php'; ?>    
     <div class="container text-center mt-2"> 
       <div class="text-left">
         <a href="/management">
@@ -21,10 +22,10 @@
         </a>
       </div>
       <p>
-          You're logged in as 
-          <strong>
-              <?php echo $_SESSION['loggedInUser']; ?>
-          </strong>
+        You're logged in as 
+        <strong>
+            <?php echo $_SESSION['loggedInUser']; ?>
+        </strong>
       </p>
       <hr>
       <div class="uploadPhoto-form">

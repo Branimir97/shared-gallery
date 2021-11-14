@@ -1,12 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-
-    <?php include "base/libraries.php"?>
+    <?php include 'base/libraries.php'; ?>
 
     <!-- CSS -->
     <style>
-      <?php include "css/container.css"?>
+      <?php include 'css/container.css'; ?>
     </style>
 
     <title>
@@ -14,12 +13,13 @@
     </title>
   </head>
   <body>   
+    <?php include 'base/navbar.php'; ?>    
     <div class="container text-center mt-2">        
       <p>
-          You're logged in as 
-          <strong>
-              <?php echo $_SESSION['loggedInUser']; ?>
-          </strong>
+        You're logged in as 
+        <strong>
+            <?php echo $_SESSION['loggedInUser']; ?>
+        </strong>
       </p>
       <hr>
       <?php
@@ -102,8 +102,8 @@
             </button> 
             <form method="POST" action="/account/deleteAccount">
               <button name="submit" class="btn btn-danger">
-                Delete account
-              </a>
+                Delete account  
+              </button>
             </form>
           </div>
         </div>

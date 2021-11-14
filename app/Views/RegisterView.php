@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-      
+    <?php include 'base/libraries.php'; ?>
+ 
     <!-- CSS -->
     <style>
-          <?php include "css/auth.css"?>
+          <?php include 'css/auth.css'; ?>
     </style>
     
     <title>
@@ -12,7 +13,7 @@
     </title>
   </head>
   <body>
-  
+    <?php include 'base/navbar.php'; ?>    
     <div class="container text-center pt-2 mb-3">
       <?php
         if(isset($_SESSION['errors'])) {

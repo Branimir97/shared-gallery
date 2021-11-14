@@ -1,15 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
-
-    <?php include('base/libraries.php'); ?>
+    <?php include 'base/libraries.php'; ?>
 
     <title>
       Shared gallery
     </title>
   </head>
   <body>
-    <?php include('base/navbar.php'); ?>    
+    <?php include 'base/navbar.php'; ?>    
     <div class="container text-center mt-2">
       <?php
         if(isset($_SESSION['loggedInMessage'])) {
@@ -32,7 +31,7 @@
     </div>
     
     <script>
-      <?php include('Services/CountPhotos.js') ?>
+      <?php include 'Services/CountPhotos.js'; ?>
     </script>
   </body>
 </html>
